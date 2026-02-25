@@ -1,0 +1,120 @@
+<mxfile host="Electron" modified="2024-02-18T00:00:00.000Z" agent="Claude Code" etag="basic" version="24.1.0" type="device">
+  <diagram id="render-modes-comparison" name="PWA Rendering Modes Comparison">
+    <mxGraphModel dx="30" dy="20" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1310" pageHeight="670" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="React PWA Rendering Modes Comparison - SSR vs CSR vs Hybrid" style="text;html=1;fontSize=16;fontStyle=1;textAnchor=middle;" vertex="1" parent="1">
+          <mxGeometry x="0" y="10" width="1200" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- SSR Column Header -->
+        <mxCell id="ssr-header" value="Server-Side Rendering (SSR)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#aed6f1;strokeColor=#1f618d;strokeWidth=2;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="360" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- SSR Description -->
+        <mxCell id="ssr-desc" value="HTML rendered on server, sent to browser with full content" style="text;html=1;fontSize=10;align=center;fillColor=#ecf0f1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="135" width="360" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- SSR Flow -->
+        <mxCell id="ssr-flow" value="Flow: Request → Server Render → Send HTML → Parse → Hydrate → Ready" style="text;html=1;fontSize=9;align=center;fillColor=#d5f4e6;fontFamily=monospace;" vertex="1" parent="1">
+          <mxGeometry x="50" y="170" width="360" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- SSR Pros -->
+        <mxCell id="ssr-pros" value="Pros:" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="220" width="360" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ssr-pros-text" value="✓ Excellent SEO&#xa;✓ Fast First Contentful Paint (FCP)&#xa;✓ Crawlable by search engines&#xa;✓ Works without JavaScript&#xa;✓ Better social share previews" style="text;html=1;fontSize=10;align=left;fillColor=#ecf0f1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="240" width="360" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- SSR Cons -->
+        <mxCell id="ssr-cons" value="Cons:" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="350" width="360" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ssr-cons-text" value="✗ Higher server load&#xa;✗ More infrastructure costs&#xa;✗ Slower Time to Interactive (TTI)&#xa;✗ Harder to cache&#xa;✗ Cold start latency" style="text;html=1;fontSize=10;align=left;fillColor=#fadbd8;" vertex="1" parent="1">
+          <mxGeometry x="50" y="370" width="360" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- CSR Column Header -->
+        <mxCell id="csr-header" value="Client-Side Rendering (CSR)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;strokeWidth=2;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="80" width="360" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- CSR Description -->
+        <mxCell id="csr-desc" value="Browser downloads JS, renders content client-side after data fetch" style="text;html=1;fontSize=10;align=center;fillColor=#ecf0f1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="135" width="360" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- CSR Flow -->
+        <mxCell id="csr-flow" value="Flow: Request → Send Shell HTML → Download JS → Render → Fetch Data → Display" style="text;html=1;fontSize=9;align=center;fillColor=#d5f4e6;fontFamily=monospace;" vertex="1" parent="1">
+          <mxGeometry x="470" y="170" width="360" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- CSR Pros -->
+        <mxCell id="csr-pros" value="Pros:" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="220" width="360" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="csr-pros-text" value="✓ Low server load&#xa;✓ Simple deployment&#xa;✓ Fast subsequent loads (cached JS)&#xa;✓ Rich interactivity&#xa;✓ Great for admin dashboards" style="text;html=1;fontSize=10;align=left;fillColor=#ecf0f1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="240" width="360" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- CSR Cons -->
+        <mxCell id="csr-cons" value="Cons:" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="350" width="360" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="csr-cons-text" value="✗ Poor SEO (no content in HTML)&#xa;✗ Slower FCP&#xa;✗ Blank page initially&#xa;✗ Expensive JS parsing&#xa;✗ Worse for social sharing" style="text;html=1;fontSize=10;align=left;fillColor=#fadbd8;" vertex="1" parent="1">
+          <mxGeometry x="470" y="370" width="360" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Hybrid Column Header -->
+        <mxCell id="hybrid-header" value="Hybrid (Best Strategy)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4d6a6;strokeColor=#a97000;strokeWidth=2;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="80" width="360" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Hybrid Description -->
+        <mxCell id="hybrid-desc" value="Choose rendering mode per route based on importance" style="text;html=1;fontSize=10;align=center;fillColor=#ecf0f1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="135" width="360" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Hybrid Examples -->
+        <mxCell id="hybrid-examples" value="Examples:&#xa;→ Products (PDP): SSR (SEO)&#xa;→ Cart: CSR (Interactive)&#xa;→ Search: CSR + Cache&#xa;→ Account: CSR (Private)" style="text;html=1;fontSize=9;align=left;fillColor=#d5f4e6;fontFamily=monospace;" vertex="1" parent="1">
+          <mxGeometry x="890" y="170" width="360" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Hybrid Pros -->
+        <mxCell id="hybrid-pros" value="Pros:" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="250" width="360" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="hybrid-pros-text" value="✓ Best SEO + performance&#xa;✓ Optimized per page type&#xa;✓ Lower overall costs&#xa;✓ Balance of speed &amp; UX&#xa;✓ Flexible &amp; scalable" style="text;html=1;fontSize=10;align=left;fillColor=#ecf0f1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="270" width="360" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Hybrid Cons -->
+        <mxCell id="hybrid-cons" value="Considerations:" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="380" width="360" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="hybrid-cons-text" value="• Requires thoughtful planning&#xa;• More complex testing&#xa;• Clear routing decisions needed&#xa;• Team coordination required" style="text;html=1;fontSize=10;align=left;fillColor=#fff3cd;" vertex="1" parent="1">
+          <mxGeometry x="890" y="400" width="360" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Recommendation Box -->
+        <mxCell id="recommendation" value="🏆 Sur La Table Recommendation: Implement HYBRID approach&#xa;• Product Detail Pages (PDP): SSR for SEO &amp; social sharing&#xa;• Shopping Cart: CSR with React Query for real-time updates&#xa;• Checkout: SSR initial render + CSR for form interactions&#xa;• Account Dashboard: CSR (user-specific, private data)&#xa;• Search Results: CSR with caching for performance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3cd;strokeColor=#856404;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="520" width="1200" height="100" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

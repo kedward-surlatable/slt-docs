@@ -1,0 +1,237 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" version="24.1.0">
+  <diagram id="saas-map" name="SaaS Integration Map">
+    <mxGraphModel dx="1800" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1400" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Sur La Table - SaaS &amp; Third-Party Integration Map" style="text;html=1;fontSize=20;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="300" y="10" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Center: SLT Platform -->
+        <mxCell id="slt-core" value="SLT E-Commerce Platform&#xa;&#xa;React PWA → BFF → SFCC&#xa;&#xa;slt-sfcc-react | slt-sfcc-bff | slt-sfcc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a237e;strokeColor=#0d47a1;strokeWidth=3;fontSize=13;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="480" width="280" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- ============ COMMERCE PLATFORM (Top) ============ -->
+        <mxCell id="cat-commerce" value="COMMERCE PLATFORM" style="text;html=1;fontSize=11;fontStyle=1;fillColor=#e3f2fd;strokeColor=#1565c0;rounded=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="530" y="70" width="280" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sfcc" value="Salesforce Commerce Cloud&#xa;(SFCC)&#xa;&#xa;E-commerce engine&#xa;Business Manager&#xa;CDN (CloudFlare)&#xa;Managed Runtime&#xa;&#xa;$$$$ / year" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1565c0;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="530" y="100" width="280" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-sfcc" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=2;strokeColor=#1565c0;" edge="1" parent="1" source="sfcc" target="slt-core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label-sfcc" value="SCAPI REST&#xa;+ Script API" style="text;html=1;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="580" y="280" width="80" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ============ SEARCH (Top Left) ============ -->
+        <mxCell id="cat-search" value="SEARCH &amp; RECOMMENDATIONS" style="text;html=1;fontSize=11;fontStyle=1;fillColor=#e8f5e9;strokeColor=#2e7d32;rounded=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="170" width="250" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bloomreach" value="Bloomreach&#xa;&#xa;Product Search&#xa;Auto-Suggest&#xa;Recommendations&#xa;AI Experiments&#xa;&#xa;~$60k-$130k+ / year" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="250" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-br" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=2;strokeColor=#2e7d32;" edge="1" parent="1" source="bloomreach" target="slt-core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label-br" value="via BFF" style="text;html=1;fontSize=9;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="370" y="400" width="50" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ============ PAYMENTS (Top Right) ============ -->
+        <mxCell id="cat-pay" value="PAYMENTS" style="text;html=1;fontSize=11;fontStyle=1;fillColor=#fce4ec;strokeColor=#c62828;rounded=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="70" width="250" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cybersource" value="Cybersource&#xa;Primary payment processor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="100" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="paypal" value="PayPal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="100" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="afterpay" value="Afterpay&#xa;(BNPL)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="160" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="applepay" value="Apple Pay" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="160" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="svs" value="SVS&#xa;(Gift Cards)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="220" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-pay" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#c62828;" edge="1" parent="1" source="cybersource" target="slt-core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label-pay" value="via SFCC&#xa;cartridges&#xa;+ BFF" style="text;html=1;fontSize=9;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="900" y="340" width="60" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ============ ORDER MANAGEMENT (Right) ============ -->
+        <mxCell id="cat-oms" value="ORDER MANAGEMENT" style="text;html=1;fontSize=11;fontStyle=1;fillColor=#fff3e0;strokeColor=#e65100;rounded=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="400" width="250" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="oracle-oms" value="Oracle OMS&#xa;&#xa;Order management&#xa;(migrating to Kibo)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="430" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="oracle-pos" value="Oracle POS&#xa;&#xa;In-store point of sale" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="510" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kibo" value="Kibo OMS&#xa;(Migration target)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff9c4;strokeColor=#f9a825;strokeWidth=2;fontSize=10;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="430" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-oms" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#e65100;" edge="1" parent="1" source="slt-core" target="oracle-oms">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn-kibo" style="endArrow=classic;html=1;strokeWidth=1;strokeColor=#f9a825;dashed=1;" edge="1" parent="1" source="oracle-oms" target="kibo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ============ RETURNS & SHIPPING (Bottom Right) ============ -->
+        <mxCell id="cat-returns" value="RETURNS &amp; SHIPPING PROTECTION" style="text;html=1;fontSize=11;fontStyle=1;fillColor=#fce4ec;strokeColor=#880e4f;rounded=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="630" width="280" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="narvar" value="Narvar&#xa;&#xa;Returns processing&#xa;Order tracking&#xa;Customer portal&#xa;&#xa;~$6 / RMA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#880e4f;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="660" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="saphonia" value="Saphonia&#xa;&#xa;Shipping protection&#xa;Damage/loss claims" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#880e4f;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="660" width="150" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-narvar" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=2;strokeColor=#880e4f;" edge="1" parent="1" source="slt-core" target="narvar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label-narvar" value="via AWS&#xa;Lambda" style="text;html=1;fontSize=9;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="910" y="640" width="60" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ============ SHIPPING & DELIVERY (Bottom) ============ -->
+        <mxCell id="cat-ship" value="SHIPPING &amp; DELIVERY" style="text;html=1;fontSize=11;fontStyle=1;fillColor=#efebe9;strokeColor=#4e342e;rounded=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="530" y="690" width="250" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ups" value="UPS&#xa;Address validation&#xa;Delivery estimates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d7ccc8;strokeColor=#4e342e;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="530" y="720" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fedex" value="FedEx&#xa;Shipping carrier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d7ccc8;strokeColor=#4e342e;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="660" y="720" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="golocal" value="GoLocal&#xa;Same-day delivery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d7ccc8;strokeColor=#4e342e;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="530" y="790" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="channeladvisor" value="Channel Advisor&#xa;Amazon marketplace" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d7ccc8;strokeColor=#4e342e;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="660" y="790" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-ship" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#4e342e;" edge="1" parent="1" source="slt-core" target="ups">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ============ MARKETING & EMAIL (Bottom Left) ============ -->
+        <mxCell id="cat-mkt" value="MARKETING &amp; EMAIL" style="text;html=1;fontSize=11;fontStyle=1;fillColor=#f3e5f5;strokeColor=#6a1b9a;rounded=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="630" width="250" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="emarsys" value="Emarsys&#xa;&#xa;Email marketing&#xa;Transactional emails&#xa;(Being replaced)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#6a1b9a;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="50" y="660" width="150" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="braze" value="Braze&#xa;(Replacement)&#xa;Email marketing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#6a1b9a;strokeWidth=2;fontSize=10;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gtm" value="Google Tag Manager&#xa;Client-side + Server-side&#xa;Pixel management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#6a1b9a;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="760" width="200" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-mkt" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#6a1b9a;" edge="1" parent="1" source="slt-core" target="emarsys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn-braze" style="endArrow=classic;html=1;strokeWidth=1;strokeColor=#6a1b9a;dashed=1;" edge="1" parent="1" source="emarsys" target="braze">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ============ ANALYTICS (Left) ============ -->
+        <mxCell id="cat-analytics" value="ANALYTICS &amp; BEHAVIOR" style="text;html=1;fontSize=11;fontStyle=1;fillColor=#e0f2f1;strokeColor=#00695c;rounded=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="430" width="250" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="heap" value="Heap&#xa;Product analytics&#xa;Funnel analysis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2dfdb;strokeColor=#00695c;strokeWidth=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="460" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="contentsquare" value="Content Square&#xa;Session recordings&#xa;User behavior" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2dfdb;strokeColor=#00695c;strokeWidth=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="180" y="460" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-analytics" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#00695c;" edge="1" parent="1" source="slt-core" target="heap">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label-analytics" value="via GTM&#xa;(client-side)" style="text;html=1;fontSize=9;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="370" y="490" width="70" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ============ REVIEWS & OTHER (Left Middle) ============ -->
+        <mxCell id="cat-reviews" value="REVIEWS &amp; CONTENT" style="text;html=1;fontSize=11;fontStyle=1;fillColor=#f1f8e9;strokeColor=#558b2f;rounded=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="550" width="250" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="turnto" value="TurnTo&#xa;Reviews &amp; Ratings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcedc8;strokeColor=#558b2f;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="50" y="580" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rioseo" value="Rio SEO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcedc8;strokeColor=#558b2f;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="180" y="580" width="55" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="optiversal" value="Optiversal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcedc8;strokeColor=#558b2f;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="245" y="580" width="65" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-turnto" style="endArrow=classic;html=1;strokeWidth=1;strokeColor=#558b2f;" edge="1" parent="1" source="slt-core" target="turnto">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ============ DATA / ERP (Far Right) ============ -->
+        <mxCell id="cat-erp" value="ERP &amp; PRODUCT DATA" style="text;html=1;fontSize=11;fontStyle=1;fillColor=#fff3e0;strokeColor=#bf360c;rounded=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="820" width="300" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="island-pac" value="Island Pacific (ERP)&#xa;iSeries / DB2&#xa;SKU creation &amp; inventory&#xa;(Very old system)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#bf360c;strokeWidth=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="850" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="pim" value="CSC PIM&#xa;Product enrichment&#xa;Web attributes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#bf360c;strokeWidth=2;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="850" width="130" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-erp" style="endArrow=classic;html=1;strokeWidth=1;strokeColor=#bf360c;dashed=1;" edge="1" parent="1" source="island-pac" target="slt-core">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label-erp" value="via Aggregator&#xa;microservice" style="text;html=1;fontSize=9;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="850" y="770" width="80" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- ============ OTHER (Far Right Middle) ============ -->
+        <mxCell id="radar" value="Radar&#xa;Geolocation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8eaf6;strokeColor=#283593;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="540" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="extend" value="Extend&#xa;Warranties" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8eaf6;strokeColor=#283593;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="590" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="avatax" value="Avatax&#xa;Tax calculation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8eaf6;strokeColor=#283593;strokeWidth=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="490" width="90" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-radar" style="endArrow=classic;html=1;strokeWidth=1;strokeColor=#283593;" edge="1" parent="1" source="slt-core" target="radar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

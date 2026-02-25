@@ -1,0 +1,153 @@
+<mxfile host="app.diagrams.net" modified="2026-02-25T00:00:00.000Z" agent="Claude Code" version="21.0.0" type="device">
+  <diagram id="marketing-email" name="Marketing &amp; Email">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Marketing &amp; Email Workflow" style="text;html=1;fontSize=24;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="500" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Actors -->
+        <mxCell id="actor-mktg" value="Marketing&#xa;Manager" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="50" y="130" width="30" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="actor-email" value="Email&#xa;Operations" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="50" y="350" width="30" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Emarsys BM Config -->
+        <mxCell id="bm-config" value="SFCC BM: Emarsys Configuration (bm_emarsys)" style="swimlane;startSize=25;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="80" width="350" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="bm-newsletter" value="Newsletter Subscriptions&#xa;(footer, checkout, account channels)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="bm-config">
+          <mxGeometry x="10" y="35" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bm-order-conf" value="Order Confirmation Email Config&#xa;(field mapping to Emarsys template)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="bm-config">
+          <mxGeometry x="10" y="72" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bm-ship-conf" value="Shipping Confirmation Email Config&#xa;(tracking, carrier field mapping)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="bm-config">
+          <mxGeometry x="10" y="109" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bm-smart" value="SmartInsight Analytics Config&#xa;(customer behavior field mapping)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="bm-config">
+          <mxGeometry x="10" y="146" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bm-predict" value="Predict Config (recommendation engine)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="bm-config">
+          <mxGeometry x="10" y="183" width="230" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="bm-dbload" value="Database Load Config" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="bm-config">
+          <mxGeometry x="250" y="183" width="90" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Transactional Email Triggers -->
+        <mxCell id="triggers" value="Transactional Email Triggers (BFF → Emarsys)" style="swimlane;startSize=25;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="340" width="350" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="trig-welcome" value="Account Created → Welcome Email&#xa;POST /emarsys/email/account-created" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="triggers">
+          <mxGeometry x="10" y="35" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="trig-invite" value="Account Invitation Email&#xa;POST /emarsys/email/create-account" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="triggers">
+          <mxGeometry x="10" y="72" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="trig-reset" value="Password Reset → Webhook → Emarsys Email&#xa;POST /webhooks/reset-password-token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="triggers">
+          <mxGeometry x="10" y="109" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="trig-order" value="Order Placed → Order Confirmation Email" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="triggers">
+          <mxGeometry x="10" y="146" width="320" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="trig-ship" value="Order Shipped → Shipping Confirmation Email" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="triggers">
+          <mxGeometry x="10" y="175" width="320" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Emarsys Platform -->
+        <mxCell id="emarsys" value="Emarsys Platform" style="swimlane;startSize=25;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="80" width="300" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="em-campaigns" value="Email Campaigns&#xa;(bulk sends, newsletters)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="emarsys">
+          <mxGeometry x="10" y="35" width="270" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="em-trans" value="Transactional Emails&#xa;(order confirm, shipping, password)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="emarsys">
+          <mxGeometry x="10" y="80" width="270" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="em-smart" value="SmartInsight Analytics&#xa;(lifecycle, churn, attribution)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="emarsys">
+          <mxGeometry x="10" y="125" width="270" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="em-predict" value="Predict Engine&#xa;(personalized recommendations)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="emarsys">
+          <mxGeometry x="10" y="170" width="270" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="em-segments" value="Customer Segmentation&#xa;(behavioral targeting)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="emarsys">
+          <mxGeometry x="10" y="215" width="270" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="em-contacts" value="Contact Database&#xa;(synced from SFCC)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="emarsys">
+          <mxGeometry x="10" y="255" width="270" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Analytics Section -->
+        <mxCell id="analytics" value="Analytics &amp; Tracking" style="swimlane;startSize=25;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="400" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="an-bloom" value="Bloomreach Search Telemetry&#xa;CloudWatch → Lambda → Aurora" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="analytics">
+          <mxGeometry x="10" y="35" width="270" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="an-gtm" value="Google Tag Manager&#xa;(page views, cart, purchases)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="analytics">
+          <mxGeometry x="10" y="80" width="270" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="an-ga" value="→ Google Analytics" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="analytics">
+          <mxGeometry x="30" y="120" width="130" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="an-pixels" value="→ Marketing Pixels" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="analytics">
+          <mxGeometry x="30" y="140" width="130" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="an-retarget" value="→ Retargeting Platforms" style="text;html=1;fontSize=10;align=left;" vertex="1" parent="analytics">
+          <mxGeometry x="30" y="160" width="130" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Newsletter Flow -->
+        <mxCell id="newsletter" value="Newsletter Subscription Flow" style="swimlane;startSize=25;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="570" width="750" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="nl-sources" value="Footer / Checkout /&#xa;Account Signup" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="newsletter">
+          <mxGeometry x="10" y="35" width="140" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="nl-bff" value="BFF: POST&#xa;/customers/&#xa;newsletter-subscription" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="newsletter">
+          <mxGeometry x="190" y="35" width="160" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="nl-emarsys" value="Emarsys&#xa;Contact List" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="newsletter">
+          <mxGeometry x="400" y="35" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="nl-campaigns" value="Targeted&#xa;Campaigns" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="newsletter">
+          <mxGeometry x="570" y="35" width="120" height="35" as="geometry" />
+        </mxCell>
+
+        <mxCell id="nla1" style="rounded=1;" edge="1" parent="newsletter" source="nl-sources" target="nl-bff">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nla2" style="rounded=1;" edge="1" parent="newsletter" source="nl-bff" target="nl-emarsys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nla3" style="rounded=1;" edge="1" parent="newsletter" source="nl-emarsys" target="nl-campaigns">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows between sections -->
+        <mxCell id="ma1" style="rounded=1;" edge="1" parent="1" source="bm-config" target="emarsys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ma2" style="rounded=1;" edge="1" parent="1" source="triggers" target="emarsys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Actor arrows -->
+        <mxCell id="act1" style="rounded=1;" edge="1" parent="1" source="actor-mktg" target="bm-config">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="act2" style="rounded=1;" edge="1" parent="1" source="actor-email" target="triggers">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

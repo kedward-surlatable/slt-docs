@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" modified="2024-02-18T00:00:00.000Z" agent="Claude Code" etag="basic" version="24.1.0" type="device">
+  <diagram id="sequence-api-request" name="Sequence Diagram - API Request Flow">
+    <mxGraphModel dx="30" dy="20" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1460" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        
+        <mxCell id="title" value="Sequence Diagram - Product Search API Request Flow" style="text;html=1;fontSize=16;fontStyle=1;textAnchor=middle;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="0" y="10" width="1400" height="30" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="user" value="User&#10;(Browser)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#d4e6f1;strokeColor=#2874a6;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="60" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="react" value="React App&#10;(SSR)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#aed6f1;strokeColor=#1f618d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="200" y="70" width="100" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="api-gateway-seq" value="BFF&#10;API Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="400" y="70" width="100" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="validation-seq" value="Validation&#10;Pipe" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4d6a6;strokeColor=#a97000;" vertex="1" parent="1">
+          <mxGeometry x="600" y="70" width="100" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cache-seq" value="Cache&#10;Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d2a2c9;strokeColor=#644d75;" vertex="1" parent="1">
+          <mxGeometry x="800" y="70" width="100" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bloomreach" value="Bloomreach&#10;Search API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8d7da;strokeColor=#721c24;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="70" width="100" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sfcc-seq" value="SFCC&#10;Backend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5b7b1;strokeColor=#922b21;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="70" width="100" height="100" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="line-user" value="" style="line;strokeColor=#000;strokeWidth=1;html=1;dashed=1;" edge="1" parent="1" source="user" target="user">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="line-react" value="" style="line;strokeColor=#000;strokeWidth=1;html=1;dashed=1;" edge="1" parent="1" source="react" target="react">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="1200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="line-api" value="" style="line;strokeColor=#000;strokeWidth=1;html=1;dashed=1;" edge="1" parent="1" source="api-gateway-seq" target="api-gateway-seq">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="450" y="1200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="line-validation" value="" style="line;strokeColor=#000;strokeWidth=1;html=1;dashed=1;" edge="1" parent="1" source="validation-seq" target="validation-seq">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="1200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="line-cache" value="" style="line;strokeColor=#000;strokeWidth=1;html=1;dashed=1;" edge="1" parent="1" source="cache-seq" target="cache-seq">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="850" y="1200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="line-bloomreach" value="" style="line;strokeColor=#000;strokeWidth=1;html=1;dashed=1;" edge="1" parent="1" source="bloomreach" target="bloomreach">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1050" y="1200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="line-sfcc" value="" style="line;strokeColor=#000;strokeWidth=1;html=1;dashed=1;" edge="1" parent="1" source="sfcc-seq" target="sfcc-seq">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1250" y="1200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        
+        <mxCell id="msg1" value="1: User submits search&#10;query 'cookware'" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow1" value="" style="endArrow=classic;html=1;dashed=0;" edge="1" parent="1" source="user" target="react" />
+
+        
+        <mxCell id="msg2" value="2: GET /api/search&#10;?query=cookware" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="300" y="250" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow2" value="" style="endArrow=classic;html=1;dashed=0;" edge="1" parent="1" source="react" target="api-gateway-seq">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="270" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="msg3" value="3: Validate query&#10;params" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="500" y="300" width="90" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow3" value="" style="endArrow=classic;html=1;dashed=0;" edge="1" parent="1" source="api-gateway-seq" target="validation-seq">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="320" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="msg4" value="4: Valid ✓" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="500" y="350" width="90" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow4" value="" style="endArrow=open;dashed=1;html=1;" edge="1" parent="1" source="validation-seq" target="api-gateway-seq">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="380" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="msg5" value="5: Check cache for&#10;'cookware' results" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="700" y="400" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow5" value="" style="endArrow=classic;html=1;dashed=0;" edge="1" parent="1" source="api-gateway-seq" target="cache-seq">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="420" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="msg6" value="6: Cache miss" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="700" y="450" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow6" value="" style="endArrow=open;dashed=1;html=1;" edge="1" parent="1" source="cache-seq" target="api-gateway-seq">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="750" y="480" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="msg7" value="7: Search for&#10;'cookware'" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="900" y="500" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow7" value="" style="endArrow=classic;html=1;dashed=0;" edge="1" parent="1" source="api-gateway-seq" target="bloomreach">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="520" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="msg8" value="8: Query product&#10;catalog" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="550" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow8" value="" style="endArrow=classic;html=1;dashed=0;" edge="1" parent="1" source="bloomreach" target="sfcc-seq">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1100" y="570" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="msg9" value="9: Return 24 products&#10;(paginated)" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="600" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow9" value="" style="endArrow=open;dashed=1;html=1;" edge="1" parent="1" source="sfcc-seq" target="bloomreach">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1150" y="630" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="msg10" value="10: Format &amp; return&#10;search results" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="900" y="650" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow10" value="" style="endArrow=open;dashed=1;html=1;" edge="1" parent="1" source="bloomreach" target="api-gateway-seq">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1050" y="670" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="msg11" value="11: Store in cache&#10;(TTL: 5 min)" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="700" y="700" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow11" value="" style="endArrow=classic;html=1;dashed=0;" edge="1" parent="1" source="api-gateway-seq" target="cache-seq">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="720" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="msg12" value="12: Cached ✓" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="700" y="750" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow12" value="" style="endArrow=open;dashed=1;html=1;" edge="1" parent="1" source="cache-seq" target="api-gateway-seq">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="750" y="780" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="msg13" value="13: 200 OK +&#10;JSON results" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="300" y="800" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow13" value="" style="endArrow=open;dashed=1;html=1;" edge="1" parent="1" source="api-gateway-seq" target="react">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="820" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="msg14" value="14: Render &amp; display&#10;search results" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="200" y="850" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="msg15" value="15: Display in browser" style="text;html=1;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="900" width="100" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow15" value="" style="endArrow=classic;html=1;dashed=0;" edge="1" parent="1" source="react" target="user">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="920" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="perf-note" value="Typical Flow Time: 300-500ms&#10;(With Caching: 50-100ms on cache hit)" style="text;html=1;fontSize=10;align=center;fillColor=#fff3cd;strokeColor=#856404;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="1000" width="600" height="50" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

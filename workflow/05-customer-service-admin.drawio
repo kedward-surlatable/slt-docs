@@ -1,0 +1,143 @@
+<mxfile host="app.diagrams.net" modified="2026-02-25T00:00:00.000Z" agent="Claude Code" version="21.0.0" type="device">
+  <diagram id="customer-service" name="Customer Service &amp; Admin">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Customer Service &amp; Admin Workflow" style="text;html=1;fontSize=24;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="500" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- CSR Actor -->
+        <mxCell id="actor-csr" value="Customer&#xa;Service Rep" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="50" y="250" width="40" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Customer Lookup -->
+        <mxCell id="lookup-box" value="Customer Lookup" style="swimlane;startSize=25;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="80" width="280" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="lookup-email" value="Search by Email&#xa;GET /admin/customers?email=..." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="lookup-box">
+          <mxGeometry x="10" y="35" width="250" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="lookup-id" value="Search by Customer ID&#xa;GET /admin/customers/:id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="lookup-box">
+          <mxGeometry x="10" y="80" width="250" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="lookup-update" value="Update Customer Profile&#xa;PATCH /admin/customers/:customerNo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="lookup-box">
+          <mxGeometry x="10" y="125" width="250" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="lookup-bm" value="SFCC BM: Direct customer editing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="lookup-box">
+          <mxGeometry x="10" y="165" width="250" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Order Support -->
+        <mxCell id="order-box" value="Order Support" style="swimlane;startSize=25;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="310" width="280" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="order-lookup" value="Lookup Order&#xa;GET /admin/orders/:orderNo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="order-box">
+          <mxGeometry x="10" y="35" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="order-related" value="View Related Orders (delivery + BOPIS + SDD)&#xa;GET /orders/:orderNo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="order-box">
+          <mxGeometry x="10" y="75" width="250" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="order-guest" value="Guest Order Track&#xa;POST /customers/validate-track-order" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="order-box">
+          <mxGeometry x="10" y="120" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="order-patch" value="Update Order: PATCH /orders/:orderNo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="order-box">
+          <mxGeometry x="10" y="155" width="250" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Password / Auth Flow -->
+        <mxCell id="auth-box" value="Password Reset Flow" style="swimlane;startSize=25;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="80" width="400" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="auth-forgot" value="Customer requests reset&#xa;POST /customers/forgot-password" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="auth-box">
+          <mxGeometry x="10" y="35" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="auth-token" value="SFCC generates token&#xa;Webhook fires" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="auth-box">
+          <mxGeometry x="10" y="85" width="170" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="auth-emarsys" value="Emarsys sends&#xa;reset email" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="auth-box">
+          <mxGeometry x="220" y="35" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="auth-reset" value="Customer resets password&#xa;POST /customers/reset-password" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="auth-box">
+          <mxGeometry x="220" y="100" width="170" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="aa1" style="rounded=1;" edge="1" parent="auth-box" source="auth-forgot" target="auth-token">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aa2" style="rounded=1;" edge="1" parent="auth-box" source="auth-token" target="auth-emarsys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aa3" style="rounded=1;" edge="1" parent="auth-box" source="auth-emarsys" target="auth-reset">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Gift Registry -->
+        <mxCell id="registry-box" value="Gift Registry Support" style="swimlane;startSize=25;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="280" width="400" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="reg-search" value="Search: GET /registry/search&#xa;(by name, email, date range)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="registry-box">
+          <mxGeometry x="10" y="35" width="180" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="reg-view" value="View: GET /customers/:id/gift-registries" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="registry-box">
+          <mxGeometry x="200" y="35" width="190" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="reg-manage" value="Manage items: POST/PATCH/DELETE&#xa;/customers/:id/gift-registries/:id/items" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="registry-box">
+          <mxGeometry x="10" y="85" width="380" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Gift Card -->
+        <mxCell id="gc-box" value="Gift Card Support" style="swimlane;startSize=25;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="440" width="400" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="gc-balance" value="Check Balance&#xa;POST /gift-card/check-balance&#xa;(reCAPTCHA protected, SVS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="gc-box">
+          <mxGeometry x="10" y="35" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gc-wallet" value="Wallet: Add / Remove / Refresh&#xa;/customers/:id/gift-cards" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="gc-box">
+          <mxGeometry x="210" y="35" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Wish Lists -->
+        <mxCell id="wl-box" value="Wish List &amp; Save-for-Later" style="swimlane;startSize=25;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="520" width="280" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="wl-view" value="View: GET /customers/:id/wish-lists" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="wl-box">
+          <mxGeometry x="10" y="35" width="250" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="wl-cart" value="Move to Cart: POST .../add-to-basket/:id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="wl-box">
+          <mxGeometry x="10" y="65" width="250" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="wl-public" value="Public Link: GET /wish-lists/:id (no auth)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="wl-box">
+          <mxGeometry x="10" y="93" width="250" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- Culinary Classes -->
+        <mxCell id="class-box" value="Culinary Classes" style="swimlane;startSize=25;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="580" width="400" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="class-enrolled" value="View Enrolled: GET /customers/:id/culinary-classes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="class-box">
+          <mxGeometry x="10" y="35" width="260" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="class-roster" value="BM: Roster Search (by SKU, print, CSV export)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="class-box">
+          <mxGeometry x="10" y="70" width="260" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="class-fill" value="BM: Fill Rate Reports (capacity vs. enrollment)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="class-box">
+          <mxGeometry x="10" y="100" width="260" height="18" as="geometry" />
+        </mxCell>
+
+        <!-- CSR arrows -->
+        <mxCell id="csr1" style="rounded=1;" edge="1" parent="1" source="actor-csr" target="lookup-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="csr2" style="rounded=1;" edge="1" parent="1" source="actor-csr" target="order-box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

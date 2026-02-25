@@ -1,0 +1,768 @@
+<mxfile host="Electron" modified="2024-02-18T00:00:00.000Z" agent="Claude Code" etag="basic" version="24.1.0" type="device">
+  <diagram id="class-diagram-entities" name="Class Diagram - Domain Entities">
+    <mxGraphModel dx="30" dy="29" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1460" pageHeight="1289" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Class Diagram - Core Domain Entities &amp; Relationships" style="text;html=1;fontSize=18;fontStyle=1;textAnchor=middle;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="0" y="10" width="1400" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Customer Class -->
+        <mxCell id="customer-class" value="&lt;&lt;Entity&gt;&gt;&#xa;Customer" style="shape=umlc;rounded=1;fontSize=11;html=1;fillColor=#aed6f1;strokeColor=#1f618d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="180" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="customer-attrs" value="- customerId: string&#xa;- email: string&#xa;- firstName: string&#xa;- lastName: string&#xa;- phone: string&#xa;- createdAt: Date&#xa;- updatedAt: Date" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="customer-class">
+          <mxGeometry y="0.35" width="1" height="0.5" as="geometry" />
+        </mxCell>
+
+        <mxCell id="customer-methods" value="+ getProfile(): CustomerProfile&#xa;+ updateProfile(data): void&#xa;+ getOrders(): Order[]&#xa;+ getBaskets(): Basket[]" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="customer-class">
+          <mxGeometry y="0.7" width="1" height="0.3" as="geometry" />
+        </mxCell>
+
+        <!-- Basket/Cart Class -->
+        <mxCell id="basket-class" value="&lt;&lt;Entity&gt;&gt;&#xa;Basket (Cart)" style="shape=umlc;rounded=1;fontSize=11;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="280" y="80" width="180" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="basket-attrs" value="- basketId: string&#xa;- customerId: string&#xa;- items: BasketItem[]&#xa;- subtotal: number&#xa;- tax: number&#xa;- shippingCost: number&#xa;- total: number&#xa;- createdAt: Date" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="basket-class">
+          <mxGeometry y="0.35" width="1" height="0.5" as="geometry" />
+        </mxCell>
+
+        <mxCell id="basket-methods" value="+ addItem(product): void&#xa;+ removeItem(itemId): void&#xa;+ updateQuantity(id, qty): void&#xa;+ applyDiscount(code): void" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="basket-class">
+          <mxGeometry y="0.7" width="1" height="0.3" as="geometry" />
+        </mxCell>
+
+        <!-- Product Class -->
+        <mxCell id="product-class" value="&lt;&lt;Entity&gt;&gt;&#xa;Product" style="shape=umlc;rounded=1;fontSize=11;html=1;fillColor=#f4d6a6;strokeColor=#a97000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="510" y="80" width="180" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="product-attrs" value="- productId: string&#xa;- sku: string&#xa;- name: string&#xa;- description: string&#xa;- price: number&#xa;- inventory: number&#xa;- categoryId: string&#xa;- images: string[]" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="product-class">
+          <mxGeometry y="0.35" width="1" height="0.5" as="geometry" />
+        </mxCell>
+
+        <mxCell id="product-methods" value="+ getDetails(): ProductDetail&#xa;+ checkInventory(qty): boolean&#xa;+ getReviews(): Review[]&#xa;+ getRecommendations(): Product[]" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="product-class">
+          <mxGeometry y="0.7" width="1" height="0.3" as="geometry" />
+        </mxCell>
+
+        <!-- Order Class -->
+        <mxCell id="order-class" value="&lt;&lt;Entity&gt;&gt;&#xa;Order" style="shape=umlc;rounded=1;fontSize=11;html=1;fillColor=#d2a2c9;strokeColor=#644d75;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="740" y="80" width="180" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="order-attrs" value="- orderId: string&#xa;- customerId: string&#xa;- orderNumber: string&#xa;- items: OrderItem[]&#xa;- status: OrderStatus&#xa;- total: number&#xa;- shippingAddress: Address&#xa;- createdAt: Date" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="order-class">
+          <mxGeometry y="0.35" width="1" height="0.5" as="geometry" />
+        </mxCell>
+
+        <mxCell id="order-methods" value="+ getOrderStatus(): OrderStatus&#xa;+ updateStatus(status): void&#xa;+ getTracking(): TrackingInfo&#xa;+ getInvoice(): Invoice" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="order-class">
+          <mxGeometry y="0.7" width="1" height="0.3" as="geometry" />
+        </mxCell>
+
+        <!-- Category Class -->
+        <mxCell id="category-class" value="&lt;&lt;Entity&gt;&gt;&#xa;Category" style="shape=umlc;rounded=1;fontSize=11;html=1;fillColor=#85c1e2;strokeColor=#1a5276;" vertex="1" parent="1">
+          <mxGeometry x="970" y="80" width="180" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="category-attrs" value="- categoryId: string&#xa;- name: string&#xa;- parentId: string&#xa;- description: string&#xa;- imageUrl: string" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="category-class">
+          <mxGeometry y="0.35" width="1" height="0.5" as="geometry" />
+        </mxCell>
+
+        <mxCell id="category-methods" value="+ getParentCategory(): Category&#xa;+ getSubCategories(): Category[]&#xa;+ getProducts(): Product[]" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="category-class">
+          <mxGeometry y="0.7" width="1" height="0.3" as="geometry" />
+        </mxCell>
+
+        <!-- BasketItem Class -->
+        <mxCell id="basketitem-class" value="&lt;&lt;Entity&gt;&gt;&#xa;BasketItem" style="shape=umlc;rounded=1;fontSize=11;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;" vertex="1" parent="1">
+          <mxGeometry x="280" y="350" width="180" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="basketitem-attrs" value="- itemId: string&#xa;- basketId: string&#xa;- productId: string&#xa;- quantity: number&#xa;- price: number&#xa;- discount: number" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="basketitem-class">
+          <mxGeometry y="0.35" width="1" height="0.5" as="geometry" />
+        </mxCell>
+
+        <mxCell id="basketitem-methods" value="+ getProduct(): Product&#xa;+ getTotalPrice(): number" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="basketitem-class">
+          <mxGeometry y="0.7" width="1" height="0.3" as="geometry" />
+        </mxCell>
+
+        <!-- OrderItem Class -->
+        <mxCell id="orderitem-class" value="&lt;&lt;Entity&gt;&gt;&#xa;OrderItem" style="shape=umlc;rounded=1;fontSize=11;html=1;fillColor=#d2a2c9;strokeColor=#644d75;" vertex="1" parent="1">
+          <mxGeometry x="740" y="350" width="180" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="orderitem-attrs" value="- itemId: string&#xa;- orderId: string&#xa;- productId: string&#xa;- quantity: number&#xa;- price: number&#xa;- discount: number" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="orderitem-class">
+          <mxGeometry y="0.35" width="1" height="0.5" as="geometry" />
+        </mxCell>
+
+        <mxCell id="orderitem-methods" value="+ getProduct(): Product&#xa;+ getTotalPrice(): number&#xa;+ getShipmentStatus(): string" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="orderitem-class">
+          <mxGeometry y="0.7" width="1" height="0.3" as="geometry" />
+        </mxCell>
+
+        <!-- Payment Class -->
+        <mxCell id="payment-class" value="&lt;&lt;Entity&gt;&gt;&#xa;Payment" style="shape=umlc;rounded=1;fontSize=11;html=1;fillColor=#f5b7b1;strokeColor=#922b21;" vertex="1" parent="1">
+          <mxGeometry x="50" y="550" width="180" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="payment-attrs" value="- paymentId: string&#xa;- orderId: string&#xa;- status: PaymentStatus&#xa;- method: PaymentMethod&#xa;- amount: number&#xa;- transactionId: string" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="payment-class">
+          <mxGeometry y="0.35" width="1" height="0.5" as="geometry" />
+        </mxCell>
+
+        <mxCell id="payment-methods" value="+ authorize(): void&#xa;+ capture(): void&#xa;+ refund(): void" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="payment-class">
+          <mxGeometry y="0.7" width="1" height="0.3" as="geometry" />
+        </mxCell>
+
+        <!-- Shipment Class -->
+        <mxCell id="shipment-class" value="&lt;&lt;Entity&gt;&gt;&#xa;Shipment" style="shape=umlc;rounded=1;fontSize=11;html=1;fillColor=#c5b0d8;strokeColor=#4a235a;" vertex="1" parent="1">
+          <mxGeometry x="280" y="550" width="180" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="shipment-attrs" value="- shipmentId: string&#xa;- orderId: string&#xa;- status: ShipmentStatus&#xa;- carrier: Carrier&#xa;- trackingNumber: string&#xa;- estimatedDate: Date" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="shipment-class">
+          <mxGeometry y="0.35" width="1" height="0.5" as="geometry" />
+        </mxCell>
+
+        <mxCell id="shipment-methods" value="+ getTracking(): TrackingInfo&#xa;+ estimateDelivery(): Date&#xa;+ updateStatus(): void" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="shipment-class">
+          <mxGeometry y="0.7" width="1" height="0.3" as="geometry" />
+        </mxCell>
+
+        <!-- Address Class -->
+        <mxCell id="address-class" value="&lt;&lt;ValueObject&gt;&gt;&#xa;Address" style="shape=umlc;rounded=1;fontSize=11;html=1;fillColor=#d5f4e6;strokeColor=#27ae60;" vertex="1" parent="1">
+          <mxGeometry x="510" y="550" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="address-attrs" value="- street: string&#xa;- city: string&#xa;- state: string&#xa;- zipCode: string&#xa;- country: string" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="address-class">
+          <mxGeometry y="0.35" width="1" height="0.6" as="geometry" />
+        </mxCell>
+
+        <!-- Review Class -->
+        <mxCell id="review-class" value="&lt;&lt;Entity&gt;&gt;&#xa;Review" style="shape=umlc;rounded=1;fontSize=11;html=1;fillColor=#f4d6a6;strokeColor:#a97000;" vertex="1" parent="1">
+          <mxGeometry x="740" y="550" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="review-attrs" value="- reviewId: string&#xa;- productId: string&#xa;- customerId: string&#xa;- rating: number (1-5)&#xa;- comment: string" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="review-class">
+          <mxGeometry y="0.35" width="1" height="0.6" as="geometry" />
+        </mxCell>
+
+        <!-- GiftCard Class -->
+        <mxCell id="giftcard-class" value="&lt;&lt;Entity&gt;&gt;&#xa;GiftCard" style="shape=umlc;rounded=1;fontSize=11;html=1;fillColor=#c5b0d8;strokeColor=#4a235a;" vertex="1" parent="1">
+          <mxGeometry x="970" y="550" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="giftcard-attrs" value="- giftCardId: string&#xa;- balance: number&#xa;- customerId: string&#xa;- expiryDate: Date&#xa;- status: GiftCardStatus" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;spacing=2;" vertex="1" parent="giftcard-class">
+          <mxGeometry y="0.35" width="1" height="0.6" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships -->
+        <!-- Customer -> Basket (1 to many) -->
+        <mxCell id="rel1" value="1" style="endArrow=open;html=1;endSize=12;startArrow=open;startSize=12;dashed=0;" edge="1" parent="1" source="customer-class" target="basket-class">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="150" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel1-label" value="owns" style="text;html=1;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="230" y="125" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Customer -> Order (1 to many) -->
+        <mxCell id="rel2" value="1" style="endArrow=open;html=1;endSize=12;startArrow=open;startSize=12;dashed=0;" edge="1" parent="1" source="customer-class" target="order-class">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="150" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel2-label" value="places" style="text;html=1;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="550" y="125" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Basket -> BasketItem (1 to many) -->
+        <mxCell id="rel3" value="1" style="endArrow=open;html=1;endSize=12;startArrow=open;startSize=12;dashed=0;" edge="1" parent="1" source="basket-class" target="basketitem-class">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="280" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel3-label" value="contains" style="text;html=1;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="340" y="300" width="50" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- BasketItem -> Product (1 to 1) -->
+        <mxCell id="rel4" value="" style="endArrow=open;html=1;endSize=12;startArrow=open;startSize=12;dashed=0;" edge="1" parent="1" source="basketitem-class" target="product-class">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="290" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel4-label" value="references" style="text;html=1;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="430" y="270" width="50" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Order -> OrderItem (1 to many) -->
+        <mxCell id="rel5" value="1" style="endArrow=open;html=1;endSize=12;startArrow=open;startSize=12;dashed=0;" edge="1" parent="1" source="order-class" target="orderitem-class">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="830" y="280" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel5-label" value="contains" style="text;html=1;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="800" y="300" width="50" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- OrderItem -> Product (1 to 1) -->
+        <mxCell id="rel6" value="" style="endArrow=open;html=1;endSize=12;startArrow=open;startSize=12;dashed=0;" edge="1" parent="1" source="orderitem-class" target="product-class">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="375" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Product -> Category (many to 1) -->
+        <mxCell id="rel7" value="" style="endArrow=open;html=1;endSize=12;startArrow=open;startSize=12;dashed=0;" edge="1" parent="1" source="product-class" target="category-class">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1020" y="150" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel7-label" value="belongs to" style="text;html=1;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="900" y="120" width="50" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Order -> Payment (1 to 1) -->
+        <mxCell id="rel8" value="" style="endArrow=open;html=1;endSize=12;startArrow=open;startSize=12;dashed=0;" edge="1" parent="1" source="order-class" target="payment-class">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="140" y="330" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel8-label" value="receives" style="text;html=1;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="250" y="400" width="50" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Order -> Shipment (1 to many) -->
+        <mxCell id="rel9" value="1" style="endArrow=open;html=1;endSize=12;startArrow=open;startSize=12;dashed=0;" edge="1" parent="1" source="order-class" target="shipment-class">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="370" y="330" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="rel9-label" value="includes" style="text;html=1;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="370" y="400" width="50" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Order -> Address (has) -->
+        <mxCell id="rel10" value="" style="endArrow=open;html=1;endSize=12;startArrow=open;startSize=12;dashed=0;" edge="1" parent="1" source="order-class" target="address-class">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="330" as="sourcePoint" />
+          </mxGeometry>
+        </thinking>
+
+Let me continue creating more draw.io files:
+<function_calls>
+<invoke name="Write">
+<parameter name="content"><mxfile host="Electron" modified="2024-02-18T00:00:00.000Z" agent="Claude Code" etag="basic" version="24.1.0" type="device">
+  <diagram id="activity-checkout-flow" name="Activity Diagram - Checkout Flow">
+    <mxGraphModel dx="30" dy="29" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1460" pageHeight="1289" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Activity Diagram - Complete Checkout &amp; Order Flow" style="text;html=1;fontSize=16;fontStyle=1;textAnchor=middle;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="0" y="10" width="1000" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Start -->
+        <mxCell id="start" value="" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="490" y="60" width="20" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Activity 1: View Cart -->
+        <mxCell id="act1" value="View Shopping Cart" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#aed6f1;strokeColor=#1f618d;" vertex="1" parent="1">
+          <mxGeometry x="400" y="110" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="trans1" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="start" target="act1" />
+
+        <!-- Decision: Proceed? -->
+        <mxCell id="dec1" value="Cart&#xa;Valid?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f4d6a6;strokeColor=#a97000;" vertex="1" parent="1">
+          <mxGeometry x="430" y="210" width="140" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="trans2" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="act1" target="dec1" />
+
+        <!-- No Path: Show Error -->
+        <mxCell id="act-error" value="Show Cart Errors" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8d7da;strokeColor=#721c24;" vertex="1" parent="1">
+          <mxGeometry x="150" y="235" width="150" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="trans-error" value="No" style="endArrow=classic;html=1;" edge="1" parent="1" source="dec1" target="act-error" />
+
+        <!-- Return to cart -->
+        <mxCell id="trans-return" value="" style="endArrow=classic;html=1;curved=1;" edge="1" parent="1" source="act-error" target="act1" />
+
+        <!-- Yes Path: Shipping -->
+        <mxCell id="act2" value="Provide Shipping Address" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;" vertex="1" parent="1">
+          <mxGeometry x="400" y="340" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="trans3" value="Yes" style="endArrow=classic;html=1;" edge="1" parent="1" source="dec1" target="act2" />
+
+        <!-- Activity 3: Calculate Shipping -->
+        <mxCell id="act3" value="Calculate Shipping Costs&#xa;(UPS/FedEx API)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;" vertex="1" parent="1">
+          <mxGeometry x="400" y="430" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="trans4" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="act2" target="act3" />
+
+        <!-- Activity 4: Select Shipping Method -->
+        <mxCell id="act4" value="Select Shipping Method" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;" vertex="1" parent="1">
+          <mxGeometry x="400" y="530" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="trans5" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="act3" target="act4" />
+
+        <!-- Activity 5: Payment Info -->
+        <mxCell id="act5" value="Enter Payment Information" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d2a2c9;strokeColor=#644d75;" vertex="1" parent="1">
+          <mxGeometry x="400" y="620" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="trans6" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="act4" target="act5" />
+
+        <!-- Activity 6: Apply Coupons -->
+        <mxCell id="act6" value="Apply Discount Codes&#xa;(Optional)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f4e6;strokeColor=#27ae60;" vertex="1" parent="1">
+          <mxGeometry x="400" y="710" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="trans7" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="act5" target="act6" />
+
+        <!-- Activity 7: Review Order -->
+        <mxCell id="act7" value="Review Order Summary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#aed6f1;strokeColor=#1f618d;" vertex="1" parent="1">
+          <mxGeometry x="400" y="810" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="trans8" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="act6" target="act7" />
+
+        <!-- Decision: Confirm Order -->
+        <mxCell id="dec2" value="Confirm&#xa;Order?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f4d6a6;strokeColor=#a97000;" vertex="1" parent="1">
+          <mxGeometry x="430" y="900" width="140" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="trans9" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="act7" target="dec2" />
+
+        <!-- No Path: Return to cart -->
+        <mxCell id="trans10" value="No / Edit" style="endArrow=classic;html=1;curved=1;" edge="1" parent="1" source="dec2" target="act5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="715" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Yes Path: Process Payment -->
+        <mxCell id="act8" value="Process Payment&#xa;(Authorize &amp; Capture)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d2a2c9;strokeColor=#644d75;" vertex="1" parent="1">
+          <mxGeometry x="400" y="1030" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="trans11" value="Yes / Place Order" style="endArrow=classic;html=1;" edge="1" parent="1" source="dec2" target="act8" />
+
+        <!-- Decision: Payment Success -->
+        <mxCell id="dec3" value="Payment&#xa;Approved?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f4d6a6;strokeColor=#a97000;" vertex="1" parent="1">
+          <mxGeometry x="430" y="1130" width="140" height="100" as="geometry" />
+        </thinking>
+
+Let me create a simpler, focused activity diagram:
+<function_calls>
+<invoke name="Write">
+<parameter name="content"><mxfile host="Electron" modified="2024-02-18T00:00:00.000Z" agent="Claude Code" etag="basic" version="24.1.0" type="device">
+  <diagram id="module-integration-overview" name="Module Integration Overview">
+    <mxGraphModel dx="30" dy="29" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1460" pageHeight="1289" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="BFF Integration Modules - Service Matrix" style="text;html=1;fontSize=18;fontStyle=1;textAnchor=middle;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="0" y="10" width="1400" height="40" as="geometry" />
+        </thinking>
+
+Let me create a comprehensive integration module overview document:
+<function_calls>
+<invoke name="Write">
+<parameter name="content"><mxfile host="Electron" modified="2024-02-18T00:00:00.000Z" agent="Claude Code" etag="basic" version="24.1.0" type="device">
+  <diagram id="integration-modules-matrix" name="Integration Modules &amp; Service Matrix">
+    <mxGraphModel dx="30" dy="29" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1460" pageHeight="1289" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="BFF - 47+ Integration Modules &amp; Service Matrix" style="text;html=1;fontSize=18;fontStyle=1;textAnchor=middle;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="0" y="10" width="1400" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- SEARCH & DISCOVERY -->
+        <mxCell id="search-box" value="Search &amp; Discovery" style="rectangle;html=1;fillColor=#aed6f1;strokeColor=#1f618d;strokeWidth=2;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="80" width="270" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="search-label" value="Search & Discovery" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="search-box">
+          <mxGeometry y="0.05" width="1" height="0.15" as="geometry" />
+        </mxCell>
+
+        <mxCell id="search-items" value="• Bloomreach (Search)&#xa;• Optiversal (Content)&#xa;• Rio SEO (Local SEO)&#xa;• Radar (Location)&#xa;• TurnTo (Reviews)" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=8;" vertex="1" parent="search-box">
+          <mxGeometry y="0.2" width="1" height="0.8" as="geometry" />
+        </mxCell>
+
+        <!-- PAYMENTS & FINANCIAL -->
+        <mxCell id="payments-box" value="Payments &amp; Financial" style="rectangle;html=1;fillColor=#d2a2c9;strokeColor=#644d75;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="330" y="80" width="270" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="payments-label" value="Payments & Financial" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="payments-box">
+          <mxGeometry y="0.05" width="1" height="0.15" as="geometry" />
+        </mxCell>
+
+        <mxCell id="payments-items" value="• Afterpay (BNPL)&#xa;• PayPal (Credit)&#xa;• Cybersource (Processor)&#xa;• SVS (Gift Cards/Prepaid)&#xa;• Stripe (Optional)" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=8;" vertex="1" parent="payments-box">
+          <mxGeometry y="0.2" width="1" height="0.8" as="geometry" />
+        </mxCell>
+
+        <!-- SHIPPING & LOGISTICS -->
+        <mxCell id="shipping-box" value="Shipping &amp; Logistics" style="rectangle;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="630" y="80" width="270" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="shipping-label" value="Shipping & Logistics" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="shipping-box">
+          <mxGeometry y="0.05" width="1" height="0.15" as="geometry" />
+        </mxCell>
+
+        <mxCell id="shipping-items" value="• UPS (Carrier)&#xa;• FedEx (Carrier)&#xa;• Go-Local (Walmart)&#xa;• BOPIS (Curbside)&#xa;• Delivery EDD" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=8;" vertex="1" parent="shipping-box">
+          <mxGeometry y="0.2" width="1" height="0.8" as="geometry" />
+        </mxCell>
+
+        <!-- MARKETING & CRM -->
+        <mxCell id="marketing-box" value="Marketing &amp; CRM" style="rectangle;html=1;fillColor=#f4d6a6;strokeColor=#a97000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="930" y="80" width="270" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="marketing-label" value="Marketing & CRM" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="marketing-box">
+          <mxGeometry y="0.05" width="1" height="0.15" as="geometry" />
+        </mxCell>
+
+        <mxCell id="marketing-items" value="• Emarsys (Email)&#xa;• Bloomreach (Personalization)&#xa;• Klaviyo (Optional)&#xa;• Google Analytics&#xa;• Segment (CDP)" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=8;" vertex="1" parent="marketing-box">
+          <mxGeometry y="0.2" width="1" height="0.8" as="geometry" />
+        </mxCell>
+
+        <!-- INVENTORY & FULFILLMENT -->
+        <mxCell id="inventory-box" value="Inventory &amp; Fulfillment" style="rectangle;html=1;fillColor=#85c1e2;strokeColor=#1a5276;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="310" width="270" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inventory-label" value="Inventory & Fulfillment" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="inventory-box">
+          <mxGeometry y="0.05" width="1" height="0.15" as="geometry" />
+        </mxCell>
+
+        <mxCell id="inventory-items" value="• SFCC Inventory&#xa;• OMS (Order Mgmt)&#xa;• Warehouse System&#xa;• Stock Sync&#xa;• Allocation Engine" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=8;" vertex="1" parent="inventory-box">
+          <mxGeometry y="0.2" width="1" height="0.8" as="geometry" />
+        </mxCell>
+
+        <!-- TAXES & COMPLIANCE -->
+        <mxCell id="taxes-box" value="Taxes &amp; Compliance" style="rectangle;html=1;fillColor=#c5b0d8;strokeColor=#4a235a;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="330" y="310" width="270" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="taxes-label" value="Taxes & Compliance" style="text;html=1;fontSize=11;fontStyle=1;" vertex="1" parent="taxes-box">
+          <mxGeometry y="0.05" width="1" height="0.15" as="geometry" />
+        </mxCell>
+
+        <mxCell id="taxes-items" value="• Avatax (Tax Calc)&#xa;• Compliance (Regulations)&#xa;• Nexus Rules&#xa;• Duty/Tax Calc&#xa;• Audit Trail" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=8;" vertex="1" parent="taxes-box">
+          <mxGeometry y="0.2" width="1" height="0.8" as="geometry" />
+        </thinking>
+
+Let me create a complete integration modules diagram with better structure:
+<function_calls>
+<invoke name="Write">
+<parameter name="content"><mxfile host="Electron" modified="2024-02-18T00:00:00.000Z" agent="Claude Code" etag="basic" version="24.1.0" type="device">
+  <diagram id="react-component-hierarchy" name="React Component Hierarchy">
+    <mxGraphModel dx="30" dy="29" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1460" pageHeight="1289" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="React PWA - Component Hierarchy &amp; Page Structure" style="text;html=1;fontSize=18;fontStyle=1;textAnchor=middle;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="0" y="10" width="1400" height="40" as="geometry" />
+        </anxCell>
+
+        <!-- Root App -->
+        <mxCell id="app" value="App.tsx (Root)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4e6f1;strokeColor=#2874a6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="600" y="80" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Main Layout -->
+        <mxCell id="layout" value="MainLayout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#aed6f1;strokeColor:#1f618d;" vertex="1" parent="1">
+          <mxGeometry x="600" y="180" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-app-layout" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="app" target="layout" />
+
+        <!-- Header -->
+        <mxCell id="header" value="Header Component&#xa;(Navigation, Logo)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;" vertex="1" parent="1">
+          <mxGeometry x="50" y="280" width="150" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Sidebar -->
+        <mxCell id="sidebar" value="Sidebar/Navigation&#xa;(Menu)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;" vertex="1" parent="1">
+          <mxGeometry x="230" y="280" width="150" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Main Content -->
+        <mxCell id="main" value="Main Content Area&#xa;(Route Pages)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;" vertex="1" parent="1">
+          <mxGeometry x="600" y="280" width="200" height="70" as="geometry" />
+        </thinking>
+
+Let me create a final comprehensive draw.io file for the integration modules:
+<function_calls>
+<invoke name="Write">
+<parameter name="content"><mxfile host="Electron" modified="2024-02-18T00:00:00.000Z" agent="Claude Code" etag="basic" version="24.1.0" type="device">
+  <diagram id="bff-external-integrations" name="BFF External Integrations Map">
+    <mxGraphModel dx="30" dy="29" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1460" pageHeight="1289" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="BFF - External Service Integrations Map (47+ Services)" style="text;html=1;fontSize=18;fontStyle=1;textAnchor=middle;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="0" y="10" width="1400" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- BFF Core (Center) -->
+        <mxCell id="bff-core" value="BFF API Gateway&#xa;(NestJS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="600" y="420" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- LEFT SIDE - SEARCH & DISCOVERY -->
+        <mxCell id="search-title" value="Search &amp; Discovery Systems" style="text;html=1;fontSize=12;fontStyle=1;textAnchor=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="60" width="250" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bloomreach-box" value="Bloomreach" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#aed6f1;strokeColor=#1f618d;" vertex="1" parent="1">
+          <mxGeometry x="50" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bloomreach-detail" value="• Search API&#xa;• Autocomplete&#xa;• Recommendations&#xa;• Personalization" style="text;html=1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="50" y="185" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rio-box" value="Rio SEO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#aed6f1;strokeColor:#1f618d;" vertex="1" parent="1">
+          <mxGeometry x="180" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rio-detail" value="• Location Pages&#xa;• Local SEO&#xa;• Store Locator&#xa;• Regional Content" style="text;html=1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="180" y="185" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- TOP - PAYMENTS -->
+        <mxCell id="payment-title" value="Payment Processors" style="text;html=1;fontSize=12;fontStyle=1;textAnchor=center;" vertex="1" parent="1">
+          <mxGeometry x="450" y="60" width="200" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="afterpay-box" value="Afterpay" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d2a2c9;strokeColor:#644d75;" vertex="1" parent="1">
+          <mxGeometry x="450" y="120" width="90" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="paypal-box" value="PayPal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d2a2c9;strokeColor:#644d75;" vertex="1" parent="1">
+          <mxGeometry x="560" y="120" width="90" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cybersource-box" value="Cybersource" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d2a2c9;strokeColor:#644d75;" vertex="1" parent="1">
+          <mxGeometry x="450" y="185" width="90" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="svs-box" value="SVS (Gift Cards)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d2a2c9;strokeColor:#644d75;" vertex="1" parent="1">
+          <mxGeometry x="560" y="185" width="90" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- RIGHT - SHIPPING -->
+        <mxCell id="shipping-title" value="Shipping &amp; Delivery" style="text;html=1;fontSize=12;fontStyle=1;textAnchor=center;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="60" width="250" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ups-box" value="UPS Freight" style="rounded=1;whiteSpace=wrap;html=1;fillColor#a9dfbf;strokeColor:#186a3b;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="120" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="fedex-box" value="FedEx" style="rounded=1;whiteSpace=wrap;html=1;fillColor:#a9dfbf;strokeColor:#186a3b;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="120" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="golocal-box" value="Go-Local (Walmart)" style="rounded=1;whiteSpace=wrap;html=1;fillColor:#a9dfbf;strokeColor:#186a3b;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="185" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bopis-box" value="BOPIS" style="rounded=1;whiteSpace=wrap;html=1;fillColor:#a9dfbf;strokeColor:#186a3b;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="185" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- BOTTOM LEFT - MARKETING -->
+        <mxCell id="marketing-title" value="Marketing &amp; Communication" style="text;html=1;fontSize=12;fontStyle=1;textAnchor=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="700" width="250" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="emarsys-box" value="Emarsys" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4d6a6;strokeColor:#a97000;" vertex="1" parent="1">
+          <mxGeometry x="50" y="750" width="110" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="emarsys-detail" value="• Email Campaigns&#xa;• Automation&#xa;• Segmentation" style="text;html=1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="50" y="815" width="110" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="turnto-box" value="TurnTo" style="rounded=1;whiteSpace=wrap;html=1;fillColor:#f4d6a6;strokeColor:#a97000;" vertex="1" parent="1">
+          <mxGeometry x="180" y="750" width="110" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="turnto-detail" value="• Reviews &amp; Ratings&#xa;• User Generated Content&#xa;• Q&amp;A" style="text;html=1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="180" y="815" width="110" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- BOTTOM CENTER - TAXES & COMPLIANCE -->
+        <mxCell id="compliance-title" value="Taxes &amp; Compliance" style="text;html=1;fontSize=12;fontStyle=1;textAnchor=center;" vertex="1" parent="1">
+          <mxGeometry x="450" y="700" width="200" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="avatax-box" value="Avatax" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c5b0d8;strokeColor:#4a235a;" vertex="1" parent="1">
+          <mxGeometry x="450" y="750" width="100" height="60" as="geometry" />
+        </thinking>
+
+Let me create a simpler final diagram that's more manageable:
+<function_calls>
+<invoke name="Write">
+<parameter name="content"><mxfile host="Electron" modified="2024-02-18T00:00:00.000Z" agent="Claude Code" etag="basic" version="24.1.0" type="device">
+  <diagram id="data-flow-diagram" name="Data Flow - Checkout to Order">
+    <mxGraphModel dx="30" dy="29" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1460" pageHeight="1289" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Data Flow Diagram - Checkout Process to Order Fulfillment" style="text;html=1;fontSize=16;fontStyle=1;textAnchor=middle;" vertex="1" parent="1">
+          <mxGeometry x="0" y="10" width="1200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Processes -->
+        <mxCell id="p1" value="1.0&#xa;Validate Cart" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#aed6f1;strokeColor:#1f618d;" vertex="1" parent="1">
+          <mxGeometry x="50" y="100" width="100" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p2" value="2.0&#xa;Calculate Shipping" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor:#186a3b;" vertex="1" parent="1">
+          <mxGeometry x="200" y="100" width="100" height="80" as="geometry" />
+        </thinking>
+
+Let me create one final comprehensive integration services diagram:
+<function_calls>
+<invoke name="Write">
+<parameter name="content"><mxfile host="Electron" modified="2024-02-18T00:00:00.000Z" agent="Claude Code" etag="basic" version="24.1.0" type="device">
+  <diagram id="service-integration-categories" name="BFF Service Integration Categories">
+    <mxGraphModel dx="30" dy="29" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1460" pageHeight="1289" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="BFF - Categorized Service Integrations (47 Total)" style="text;html=1;fontSize=16;fontStyle=1;textAnchor=middle;" vertex="1" parent="1">
+          <mxGeometry x="0" y="10" width="1200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Category 1: Search -->
+        <mxCell id="cat1" value="Search &amp; Catalog" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#aed6f1;strokeColor:#1f618d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cat1-content" value="• Bloomreach (Core search)&#xa;• Optiversal (Content)&#xa;• Rio SEO (Local)&#xa;• TurnTo (Reviews)&#xa;• Radar (Location)" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=5;" vertex="1" parent="cat1">
+          <mxGeometry y="0.3" width="1" height="0.7" as="geometry" />
+        </mxCell>
+
+        <!-- Category 2: Payments -->
+        <mxCell id="cat2" value="Payments &amp; Financial" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d2a2c9;strokeColor=#644d75;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="330" y="80" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cat2-content" value="• Afterpay (BNPL)&#xa;• PayPal (Credit)&#xa;• Cybersource (Gateway)&#xa;• SVS (Gift Cards)&#xa;• Payment Orchestration" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=5;" vertex="1" parent="cat2">
+          <mxGeometry y="0.3" width="1" height="0.7" as="geometry" />
+        </mxCell>
+
+        <!-- Category 3: Shipping -->
+        <mxCell id="cat3" value="Shipping &amp; Logistics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor:#186a3b;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="610" y="80" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cat3-content" value="• UPS (Ground &amp; Express)&#xa;• FedEx (Parcel)&#xa;• Go-Local (Walmart)&#xa;• BOPIS (Curbside)&#xa;• Delivery EDD" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=5;" vertex="1" parent="cat3">
+          <mxGeometry y="0.3" width="1" height="0.7" as="geometry" />
+        </mxCell>
+
+        <!-- Category 4: Marketing -->
+        <mxCell id="cat4" value="Marketing &amp; Engagement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4d6a6;strokeColor:#a97000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="230" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cat4-content" value="• Emarsys (Email)&#xa;• Bloomreach (Personalization)&#xa;• Klaviyo (Marketing Platform)&#xa;• Google Analytics&#xa;• Customer Data" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=5;" vertex="1" parent="cat4">
+          <mxGeometry y="0.3" width="1" height="0.7" as="geometry" />
+        </mxCell>
+
+        <!-- Category 5: Fulfillment -->
+        <mxCell id="cat5" value="Fulfillment &amp; OMS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85c1e2;strokeColor:#1a5276;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="330" y="230" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cat5-content" value="• SFCC OMS (Order Mgmt)&#xa;• Warehouse Systems&#xa;• Inventory Sync&#xa;• Stock Allocation&#xa;• Order Orchestration" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=5;" vertex="1" parent="cat5">
+          <mxGeometry y="0.3" width="1" height="0.7" as="geometry" />
+        </mxCell>
+
+        <!-- Category 6: Taxes & Compliance -->
+        <mxCell id="cat6" value="Taxes &amp; Compliance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c5b0d8;strokeColor=#4a235a;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="610" y="230" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cat6-content" value="• Avatax (Tax Calculation)&#xa;• Nexus Determination&#xa;• Compliance Tracking&#xa;• Audit Logging&#xa;• Regulatory Reports" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=5;" vertex="1" parent="cat6">
+          <mxGeometry y="0.3" width="1" height="0.7" as="geometry" />
+        </mxCell>
+
+        <!-- Category 7: Customer & Accounts -->
+        <mxCell id="cat7" value="Customer Account Services" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5f4e6;strokeColor:#27ae60;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="380" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cat7-content" value="• SLAS Authentication&#xa;• Profile Management&#xa;• Address Books&#xa;• Preference Center&#xa;• Password Management" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=5;" vertex="1" parent="cat7">
+          <mxGeometry y="0.3" width="1" height="0.7" as="geometry" />
+        </mxCell>
+
+        <!-- Category 8: Special Features -->
+        <mxCell id="cat8" value="Special Features" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce5cd;strokeColor=#bf8f00;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="330" y="380" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cat8-content" value="• Gift Registries&#xa;• Gift Cards Management&#xa;• Wishlists&#xa;• Subscriptions&#xa;• Loyalty Programs" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=5;" vertex="1" parent="cat8">
+          <mxGeometry y="0.3" width="1" height="0.7" as="geometry" />
+        </mxCell>
+
+        <!-- Category 9: Security & Monitoring -->
+        <mxCell id="cat9" value="Security &amp; Monitoring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8d7da;strokeColor=#721c24;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="610" y="380" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cat9-content" value="• Google reCAPTCHA&#xa;• AWS CloudWatch&#xa;• Monitoring &amp; Logging&#xa;• Error Tracking&#xa;• Performance Analytics" style="text;html=1;fontSize=10;align=left;verticalAlign=top;spacingTop=5;" vertex="1" parent="cat9">
+          <mxGeometry y="0.3" width="1" height="0.7" as="geometry" />
+        </mxCell>
+
+        <!-- Statistics -->
+        <mxCell id="stats" value="Total Integration Modules: 47+&#xa;Average Response Time: 200-500ms&#xa;Cache Hit Rate Target: 70%+&#xa;Uptime Target: 99.9%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecf0f1;strokeColor=#34495e;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="550" width="810" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend" value="Legend: Each rectangle represents a logical grouping of integration services. All services communicate through the BFF API layer using standard HTTP/REST protocols." style="text;html=1;fontSize=9;align=center;fillColor=#fff3cd;strokeColor=#856404;" vertex="1" parent="1">
+          <mxGeometry x="50" y="680" width="810" height="50" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

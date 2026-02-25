@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" modified="2024-02-18T00:00:00.000Z" agent="Claude Code" etag="basic" version="24.1.0" type="device">
+  <diagram id="system-architecture" name="System Architecture Overview">
+    <mxGraphModel dx="30" dy="20" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1460" pageHeight="950" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        
+        <mxCell id="title" value="Sur La Table E-Commerce Platform - System Architecture" style="text;html=1;fontSize=18;fontStyle=1;textAnchor=middle;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="0" y="10" width="1400" height="40" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="browser" value="Browser / Web Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4e6f1;strokeColor=#2874a6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="100" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="react-app" value="React PWA Storefront&#10;(slt-sfcc-react)&#10;Port: 8000" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#aed6f1;strokeColor=#1f618d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="250" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="conn1" value="" style="endArrow=classic;html=1;rounded=1;" edge="1" parent="1" source="browser" target="react-app">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="react-details" value="• React 18 + TypeScript&#10;• Chakra UI + Tailwind CSS&#10;• SSR (Server-Side Rendering)&#10;• PWA with offline support&#10;• React Query for state" style="text;html=1;fontSize=11;textAnchor=left;verticalAlign=top;align=left;fillColor=#ecf0f1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="270" y="250" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="bff" value="BFF API Gateway&#10;(slt-sfcc-bff)&#10;NestJS &#10;Port: 1337" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="450" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="conn2" value="HTTP API Calls&#10;REST / JSON" style="endArrow=classic;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="react-app" target="bff">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="350" as="sourcePoint" />
+            <mxPoint x="150" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        
+        <mxCell id="bff-details" value="• NestJS 11 Framework&#10;• 47+ Integration Modules&#10;• Commerce SDK Integration&#10;• Caching Layer (Redis)&#10;• Swagger Documentation" style="text;html=1;fontSize=11;textAnchor=left;verticalAlign=top;align=left;fillColor=#ecf0f1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="270" y="450" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="sfcc" value="Salesforce Commerce Cloud&#10;(slt-sfcc)&#10;SiteGenesis Framework" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5b7b1;strokeColor=#922b21;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="500" y="450" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="conn3" value="Commerce SDK&#10;REST API" style="endArrow=classic;html=1;rounded=1;" edge="1" parent="1" source="bff" target="sfcc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="sfcc-details" value="• 37+ Cartridges&#10;• Product Catalog&#10;• Shopping Cart &amp; Checkout&#10;• Order Management&#10;• Business Manager" style="text;html=1;fontSize=11;textAnchor=left;verticalAlign=top;align=left;fillColor=#ecf0f1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="450" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="services" value="Third-Party Services&#10;(26+ Integrations)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8d7da;strokeColor=#721c24;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="950" y="450" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="conn4" value="Integration Modules" style="endArrow=classic;html=1;rounded=1;" edge="1" parent="1" source="bff" target="services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="services-details" value="• Bloomreach (Search)&#10;• Emarsys (Marketing)&#10;• Afterpay, PayPal (Payments)&#10;• UPS, FedEx (Shipping)&#10;• Avatax (Taxes)&#10;• BOPIS, Go-Local&#10;• Gift Cards, Registries" style="text;html=1;fontSize=10;textAnchor=left;verticalAlign=top;align=left;fillColor=#ecf0f1;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="420" width="200" height="140" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="config" value="Configuration Management&#10;(slt-sfcc-configs)&#10;Git-based" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d6eaf8;strokeColor=#1840a0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="500" y="650" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="conn5" value="System Objects&#10;OCAPI Settings" style="endArrow=classic;html=1;rounded=1;dashed=1;" edge="1" parent="1" source="config" target="sfcc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="deploy-label" value="Deployment Environments" style="text;html=1;fontSize=12;fontStyle=1;textAnchor=left;" vertex="1" parent="1">
+          <mxGeometry x="50" y="800" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="deploy-dev" value="Development" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3cd;strokeColor=#856404;" vertex="1" parent="1">
+          <mxGeometry x="50" y="850" width="150" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="deploy-staging" value="Staging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3cd;strokeColor=#856404;" vertex="1" parent="1">
+          <mxGeometry x="220" y="850" width="150" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="deploy-prod" value="Production" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8d7da;strokeColor=#721c24;" vertex="1" parent="1">
+          <mxGeometry x="390" y="850" width="150" height="40" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="legend" value="Data Flow &amp; Communication Paths" style="text;html=1;fontSize=12;fontStyle=1;textAnchor=left;" vertex="1" parent="1">
+          <mxGeometry x="700" y="800" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend1" value="→ Synchronous REST API" style="text;html=1;fontSize=11;textAnchor=left;" vertex="1" parent="1">
+          <mxGeometry x="700" y="845" width="300" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend2" value="⋯ Configuration / Static Data" style="text;html=1;fontSize=11;textAnchor=left;" vertex="1" parent="1">
+          <mxGeometry x="700" y="875" width="300" height="25" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

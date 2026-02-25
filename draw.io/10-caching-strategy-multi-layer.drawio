@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" modified="2024-02-18T00:00:00.000Z" agent="Claude Code" etag="basic" version="24.1.0" type="device">
+  <diagram id="caching-strategy" name="Caching Strategy &amp; Data Layers">
+    <mxGraphModel dx="30" dy="29" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1260" pageHeight="939" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        
+        <mxCell id="title" value="Caching Strategy - Multi-Layer Cache Architecture" style="text;html=1;fontSize=16;fontStyle=1;textAnchor=middle;" vertex="1" parent="1">
+          <mxGeometry x="0" y="10" width="1200" height="30" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="layer1" value="Layer 1: Browser Cache" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#aed6f1;strokeColor=#1f618d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="layer1-content" value="• HTTP Cache Headers&#10;• Service Worker Cache&#10;• LocalStorage (Auth tokens)&#10;• SessionStorage (Session data)&#10;TTL: Variable (1h to 30d)" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;" vertex="1" parent="layer1">
+          <mxGeometry y="0.3" width="1" height="0.7" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="layer2" value="Layer 2: React Query&#10;(Client Memory)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor:#186a3b;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="330" y="80" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="layer2-content" value="• Product data (5-10min)&#10;• Category data (15min)&#10;• User profile (30min)&#10;• Search results (2min)&#10;• Shopping cart (1min)&#10;Auto refetch on stale" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;" vertex="1" parent="layer2">
+          <mxGeometry y="0.3" width="1" height="0.7" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="layer3" value="Layer 3: BFF Redis Cache" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4d6a6;strokeColor:#a97000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="610" y="80" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="layer3-content" value="• Product catalog (1h)&#10;• Search results (5min)&#10;• Category hierarchy (1h)&#10;• User sessions (30min)&#10;• Config/Preferences (15min)&#10;Cache key: {type}:{id}:{version}" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;" vertex="1" parent="layer3">
+          <mxGeometry y="0.3" width="1" height="0.7" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="layer4" value="Layer 4: SFCC Cache" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d2a2c9;strokeColor=#644d75;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="50" y="240" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="layer4-content" value="• Catalog cache (2h)&#10;• Price/Promo cache (30min)&#10;• Inventory snapshot (5min)&#10;• Customer segments (1h)&#10;• Managed by SFCC&#10;CDN edge caching" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;" vertex="1" parent="layer4">
+          <mxGeometry y="0.3" width="1" height="0.7" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="layer5" value="Layer 5: CDN Cache&#10;(CloudFlare)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#85c1e2;strokeColor:#1a5276;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="330" y="240" width="250" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="layer5-content" value="• Static assets (30d)&#10;• HTML pages (1-24h)&#10;• API responses (variable)&#10;• Images &amp; CSS/JS (persistent)&#10;• Global edge locations&#10;• Instant purge capability" style="text;html=1;fontSize=9;align=left;verticalAlign=top;spacingTop=5;" vertex="1" parent="layer5">
+          <mxGeometry y="0.3" width="1" height="0.7" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="invalidation-title" value="Cache Invalidation &amp; Update Strategy" style="text;html=1;fontSize=12;fontStyle=1;textAnchor=center;" vertex="1" parent="1">
+          <mxGeometry x="610" y="240" width="550" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="invalidation-box" value="Event-Based Invalidation:&#10;&#10;1. Product Updated (Admin)&#10;   → Purge SFCC cache&#10;   → Invalidate CDN entry&#10;   → Emit webhook to BFF&#10;   → Clear Redis key&#10;   → Next client query refreshes React Query&#10;&#10;2. User Adds to Cart&#10;   → Optimistic update in React&#10;   → POST to BFF&#10;   → Update cart in Redis&#10;   → Background sync with SFCC&#10;   → Client re-validates inventory&#10;&#10;3. Inventory Changes&#10;   → SFCC emits event&#10;   → BFF receives webhook&#10;   → Invalidate stock cache&#10;   → Notify connected clients (WebSocket)&#10;   → Refresh availability UI" style="text;html=1;fontSize=9;align=left;verticalAlign=top;fontFamily=monospace;fillColor=#ecf0f1;strokeColor:#34495e;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="280" width="550" height="250" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="hit-rate-title" value="Expected Cache Hit Rates &amp; Performance Impact" style="text;html=1;fontSize=12;fontStyle=1;textAnchor=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="550" width="1100" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="hit-rates" value="Type&#10;&#10;Product Catalog&#10;Search Results&#10;Category Data&#10;User Profile&#10;Shopping Cart&#10;Static Assets&#10;API Calls (avg)&#10;&#10;Hit Rate&#10;&#10;85-95%&#10;70-80%&#10;90-95%&#10;70-85%&#10;40-60%&#10;98%+&#10;~75%&#10;&#10;Response Time (Hit)&#10;&#10;50-100ms&#10;30-80ms&#10;20-50ms&#10;60-150ms&#10;10-30ms&#10;10-20ms&#10;~100ms&#10;&#10;Response Time (Miss)&#10;&#10;500-800ms&#10;800-1200ms&#10;200-400ms&#10;400-600ms&#10;500-1000ms&#10;1000-2000ms&#10;~1000ms" style="text;html=1;fontSize=8.5;align=center;verticalAlign=top;fontFamily=monospace;fillColor=#ecf0f1;strokeColor=#34495e;" vertex="1" parent="1">
+          <mxGeometry x="50" y="590" width="1100" height="150" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="practices" value="Caching Best Practices&#10;• Always set TTL (prevent stale data)&#10;• Use cache keys with versions&#10;• Implement cache warming for critical data&#10;• Monitor hit rates with APM&#10;• Use stale-while-revalidate pattern&#10;• Implement graceful degradation on cache miss" style="text;html=1;fontSize=9;align=left;fillColor=#d5f4e6;strokeColor:#27ae60;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="780" width="1100" height="100" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

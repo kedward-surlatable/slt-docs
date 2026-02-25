@@ -1,0 +1,219 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" version="24.1.0">
+  <diagram id="platform-arch" name="Platform Architecture">
+    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="Sur La Table - Platform Architecture" style="text;html=1;fontSize=20;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="400" y="10" width="600" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Customer Layer -->
+        <mxCell id="customer-group" value="Customers" style="swimlane;startSize=25;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="1520" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="browser" value="Browser / Mobile" style="shape=mxgraph.cisco.users.mobile_user;sketch=0;fillColor=#036897;strokeColor=#036897;fontColor=#333333;fontSize=11;" vertex="1" parent="customer-group">
+          <mxGeometry x="700" y="25" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- CDN Layer -->
+        <mxCell id="cdn" value="Salesforce CDN (CloudFlare)&#xa;Routes traffic between PWA and SiteGenesis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="170" width="440" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Customer to CDN -->
+        <mxCell id="conn-cust-cdn" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="browser" target="cdn">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Frontend Layer -->
+        <mxCell id="fe-group" value="Frontend Layer (Salesforce Hosted)" style="swimlane;startSize=25;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="250" width="1520" height="170" as="geometry" />
+        </mxCell>
+
+        <!-- PWA -->
+        <mxCell id="pwa" value="React PWA (75%)&#xa;slt-sfcc-react&#xa;&#xa;React 18 | TypeScript | Node 22&#xa;Chakra UI | Tailwind CSS&#xa;SSR with Express&#xa;&#xa;Hosted on Managed Runtime (MRT)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#aed6f1;strokeColor=#1f618d;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="fe-group">
+          <mxGeometry x="60" y="35" width="320" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- SiteGenesis -->
+        <mxCell id="sitegen" value="SiteGenesis (25%)&#xa;slt-sfcc&#xa;&#xa;Rhinoscript | ISML Templates | Node 6.14&#xa;jQuery | Browserify&#xa;Cannot run locally&#xa;&#xa;Hosted on SFCC Instances" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5b7b1;strokeColor=#922b21;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="fe-group">
+          <mxGeometry x="440" y="35" width="320" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Shared Nav callout -->
+        <mxCell id="shared-nav" value="Shared Navigation&#xa;(rendered in BOTH systems)" style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="fe-group">
+          <mxGeometry x="820" y="35" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- PWA pages -->
+        <mxCell id="pwa-pages" value="PLP | PDP | Cart | Checkout&#xa;Account | Search | Registry&#xa;Store Locator" style="text;html=1;fontSize=10;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;align=center;" vertex="1" parent="fe-group">
+          <mxGeometry x="1060" y="35" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sg-pages" value="Culinary Classes&#xa;Home Page (CMS)&#xa;Legacy Pages" style="text;html=1;fontSize=10;fillColor=#f8cecc;strokeColor=#b85450;rounded=1;align=center;" vertex="1" parent="fe-group">
+          <mxGeometry x="1060" y="95" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="label-pwa-pages" value="PWA Pages:" style="text;html=1;fontSize=10;fontStyle=1;align=right;" vertex="1" parent="fe-group">
+          <mxGeometry x="960" y="35" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="label-sg-pages" value="SiteGen Pages:" style="text;html=1;fontSize=10;fontStyle=1;align=right;" vertex="1" parent="fe-group">
+          <mxGeometry x="960" y="100" width="90" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- CDN to frontends -->
+        <mxCell id="conn-cdn-pwa" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#1f618d;" edge="1" parent="1" source="cdn" target="pwa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn-cdn-sg" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#922b21;" edge="1" parent="1" source="cdn" target="sitegen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- BFF Layer -->
+        <mxCell id="bff-group" value="Backend-for-Frontend Layer (AWS)" style="swimlane;startSize=25;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="450" width="1520" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bff" value="BFF API Gateway&#xa;slt-sfcc-bff&#xa;&#xa;NestJS 11 | TypeScript | Node 22&#xa;47+ Integration Modules&#xa;AWS ECS (prod) / Lambda" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;strokeWidth=2;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="bff-group">
+          <mxGeometry x="60" y="30" width="320" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bff-modules" value="Core Modules: baskets, customers, products, stores, categories, content, orders&#xa;Integrations: bloomreach, emarsys, turn-to, radar, ups, go-local, bopis, svs, rio-seo, optiversal, recaptcha, webhooks" style="text;html=1;fontSize=10;fillColor=#ecf0f1;strokeColor=none;align=left;verticalAlign=top;spacingLeft=5;" vertex="1" parent="bff-group">
+          <mxGeometry x="440" y="30" width="650" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: PWA to BFF -->
+        <mxCell id="conn-pwa-bff" value="REST / JSON" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#186a3b;fontStyle=1;fontSize=10;" edge="1" parent="1" source="pwa" target="bff">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Backend Services Layer -->
+        <mxCell id="be-group" value="Backend Services &amp; Third-Party APIs" style="swimlane;startSize=25;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="610" width="1520" height="190" as="geometry" />
+        </mxCell>
+
+        <!-- SFCC SCAPI -->
+        <mxCell id="sfcc-api" value="SFCC SCAPI&#xa;(Commerce APIs)&#xa;&#xa;Products | Baskets&#xa;Orders | Customers&#xa;Categories | Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5b7b1;strokeColor=#922b21;strokeWidth=2;fontSize=10;" vertex="1" parent="be-group">
+          <mxGeometry x="30" y="35" width="150" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Bloomreach -->
+        <mxCell id="bloomreach" value="Bloomreach&#xa;&#xa;Search&#xa;Suggest&#xa;Recommendations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b3e5fc;strokeColor=#0277bd;strokeWidth=2;fontSize=10;" vertex="1" parent="be-group">
+          <mxGeometry x="210" y="35" width="130" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Oracle -->
+        <mxCell id="oracle" value="Oracle&#xa;&#xa;OMS&#xa;POS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#ef6c00;strokeWidth=2;fontSize=10;" vertex="1" parent="be-group">
+          <mxGeometry x="370" y="35" width="110" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Payments -->
+        <mxCell id="payments" value="Payments&#xa;&#xa;Cybersource&#xa;PayPal&#xa;Afterpay | Apple Pay&#xa;SVS (Gift Cards)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#388e3c;strokeWidth=2;fontSize=10;" vertex="1" parent="be-group">
+          <mxGeometry x="510" y="35" width="130" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Shipping -->
+        <mxCell id="shipping" value="Shipping &amp; Delivery&#xa;&#xa;UPS&#xa;FedEx&#xa;GoLocal (SDD)&#xa;Narvar (Returns)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffccbc;strokeColor=#e64a19;strokeWidth=2;fontSize=10;" vertex="1" parent="be-group">
+          <mxGeometry x="670" y="35" width="130" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Marketing -->
+        <mxCell id="marketing" value="Marketing &amp; Email&#xa;&#xa;Emarsys → Braze&#xa;GTM (client + server)&#xa;Channel Advisor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#8e24aa;strokeWidth=2;fontSize=10;" vertex="1" parent="be-group">
+          <mxGeometry x="830" y="35" width="130" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Analytics -->
+        <mxCell id="analytics" value="Analytics&#xa;&#xa;Heap&#xa;Content Square&#xa;AB Testing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b2dfdb;strokeColor=#00695c;strokeWidth=2;fontSize=10;" vertex="1" parent="be-group">
+          <mxGeometry x="990" y="35" width="130" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Other -->
+        <mxCell id="other" value="Other&#xa;&#xa;TurnTo (Reviews)&#xa;Radar (Geo)&#xa;Extend (Warranty)&#xa;Rio SEO | Optiversal&#xa;Saphonia (Claims)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4c3;strokeColor=#827717;strokeWidth=2;fontSize=10;" vertex="1" parent="be-group">
+          <mxGeometry x="1150" y="35" width="140" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows from BFF to backend services -->
+        <mxCell id="conn-bff-sfcc" style="endArrow=classic;html=1;strokeWidth=1;strokeColor=#922b21;" edge="1" parent="1" source="bff" target="sfcc-api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn-bff-br" style="endArrow=classic;html=1;strokeWidth=1;strokeColor=#0277bd;" edge="1" parent="1" source="bff" target="bloomreach">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn-bff-pay" style="endArrow=classic;html=1;strokeWidth=1;strokeColor=#388e3c;" edge="1" parent="1" source="bff" target="payments">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn-bff-ship" style="endArrow=classic;html=1;strokeWidth=1;strokeColor=#e64a19;" edge="1" parent="1" source="bff" target="shipping">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Data Layer -->
+        <mxCell id="data-group" value="Data &amp; Product Information" style="swimlane;startSize=25;fillColor=#fff3e0;strokeColor=#e65100;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="830" width="1520" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="island-pacific" value="Island Pacific&#xa;(ERP)&#xa;&#xa;iSeries / DB2&#xa;SKU creation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=2;fontSize=10;" vertex="1" parent="data-group">
+          <mxGeometry x="30" y="30" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="aggregator" value="Aggregator&#xa;Microservice&#xa;&#xa;MongoDB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=2;fontSize=10;" vertex="1" parent="data-group">
+          <mxGeometry x="240" y="30" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="pim" value="CSC PIM&#xa;&#xa;Product enrichment&#xa;(replaced Stibo)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;strokeWidth=2;fontSize=10;" vertex="1" parent="data-group">
+          <mxGeometry x="450" y="30" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn-ip-agg" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#ef6c00;" edge="1" parent="data-group" source="island-pacific" target="aggregator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="conn-agg-pim" value="" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#ef6c00;" edge="1" parent="data-group" source="aggregator" target="pim">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Internal Tools -->
+        <mxCell id="tools-group" value="Internal Tools (SLT-Built)" style="swimlane;startSize=25;fillColor=#f3e5f5;strokeColor=#7b1fa2;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="980" width="1520" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ecom-v2" value="eCom Tools V2&#xa;React + Python + MongoDB&#xa;Stores | Recipes | Price Overrides | Returns | Claims" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=10;" vertex="1" parent="tools-group">
+          <mxGeometry x="30" y="30" width="350" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="narvar-lambdas" value="Narvar Integration Lambdas&#xa;Returns webhooks | Saphonia claims | Auto-processing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;strokeWidth=2;fontSize=10;" vertex="1" parent="tools-group">
+          <mxGeometry x="420" y="30" width="350" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend-title" value="Legend" style="text;html=1;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="980" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-pwa" value="" style="rounded=1;fillColor=#aed6f1;strokeColor=#1f618d;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="1005" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-pwa-t" value="React PWA" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="1003" width="80" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-sg" value="" style="rounded=1;fillColor=#f5b7b1;strokeColor=#922b21;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="1025" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-sg-t" value="SiteGenesis / SFCC" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="1023" width="110" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-bff" value="" style="rounded=1;fillColor=#a9dfbf;strokeColor=#186a3b;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="1045" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-bff-t" value="BFF (AWS)" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="1043" width="80" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-3p" value="" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="1065" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-3p-t" value="Third-Party SaaS" style="text;html=1;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="1063" width="110" height="18" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
