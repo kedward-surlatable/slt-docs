@@ -1,222 +1,173 @@
-<?xml version='1.0' encoding='utf-8'?>
-<mxfile host="Electron" modified="2024-02-18T00:00:00.000Z" agent="Claude Code" etag="basic" version="24.1.0" type="device">
-  <diagram id="state-diagram-cart-order" name="State Diagram - Cart &amp; Order States">
-    <mxGraphModel dx="30" dy="20" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1460" pageHeight="950" background="#ffffff" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-
-        
-        <mxCell id="title" value="State Diagram - Shopping Cart &amp; Order Lifecycle" style="text;html=1;fontSize=18;fontStyle=1;textAnchor=middle;verticalAlign=top;" vertex="1" parent="1">
-          <mxGeometry x="0" y="10" width="1400" height="40" as="geometry" />
-        </mxCell>
-
-        
-        <mxCell id="cart-title" value="Shopping Cart States" style="text;html=1;fontSize=14;fontStyle=1;textAnchor=center;" vertex="1" parent="1">
-          <mxGeometry x="50" y="70" width="400" height="30" as="geometry" />
-        </mxCell>
-
-        
-        <mxCell id="state-empty" value="Empty Cart" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d4e6f1;strokeColor=#2874a6;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="150" y="120" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="state-active" value="Active Cart" style="ellipse;whiteSpace=wrap;html=1;fillColor=#aed6f1;strokeColor=#1f618d;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="150" y="260" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="state-reviewing" value="Reviewing/&#10;Editing" style="ellipse;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="150" y="400" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="state-checkout" value="In Checkout" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f4d6a6;strokeColor=#a97000;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="150" y="540" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="state-abandoned" value="Abandoned" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8d7da;strokeColor=#721c24;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="300" y="540" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        
-        <mxCell id="trans1" value="Add Item" style="endArrow=classic;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="state-empty" target="state-active">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="200" y="200" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="trans2" value="Update/Remove" style="endArrow=classic;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="state-active" target="state-reviewing">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="200" y="340" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="trans3" value="Apply Coupon/&#10;Shipping" style="endArrow=classic;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="state-reviewing" target="state-checkout">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="200" y="480" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="trans4" value="Back to Cart" style="endArrow=classic;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="state-checkout" target="state-active">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="50" y="460" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="trans5" value="Abandon&#10;(timeout)" style="endArrow=classic;html=1;rounded=1;" edge="1" parent="1" source="state-active" target="state-abandoned">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="250" y="500" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="trans6" value="Abandon" style="endArrow=classic;html=1;rounded=1;" edge="1" parent="1" source="state-reviewing" target="state-abandoned">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="250" y="500" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="trans7" value="Remove All" style="endArrow=classic;html=1;rounded=1;curved=1;" edge="1" parent="1" source="state-reviewing" target="state-empty">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="100" y="320" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        
-        <mxCell id="order-title" value="Order Lifecycle States" style="text;html=1;fontSize=14;fontStyle=1;textAnchor=center;" vertex="1" parent="1">
-          <mxGeometry x="950" y="70" width="400" height="30" as="geometry" />
-        </mxCell>
-
-        
-        <mxCell id="state-created" value="Order Created" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d2a2c9;strokeColor=#644d75;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="1050" y="120" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="state-processing" value="Processing" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d2a2c9;strokeColor=#644d75;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="1050" y="260" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="state-payment-pending" value="Payment&#10;Pending" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f4d6a6;strokeColor=#a97000;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="800" y="260" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="state-payment-confirmed" value="Payment&#10;Confirmed" style="ellipse;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor:#186a3b;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="1050" y="400" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="state-fulfilling" value="Fulfilling" style="ellipse;whiteSpace=wrap;html=1;fillColor=#85c1e2;strokeColor=#1a5276;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="1050" y="540" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="state-shipped" value="Shipped" style="ellipse;whiteSpace=wrap;html=1;fillColor=#85c1e2;strokeColor=#1a5276;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="1050" y="680" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="state-delivered" value="Delivered" style="ellipse;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor:#186a3b;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="1050" y="820" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="state-payment-failed" value="Payment&#10;Failed" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8d7da;strokeColor=#721c24;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="800" y="400" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="state-cancelled" value="Cancelled" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8d7da;strokeColor:#721c24;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="800" y="540" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        <mxCell id="state-returned" value="Returned" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8d7da;strokeColor:#721c24;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="800" y="680" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        
-        <mxCell id="ord-trans1" value="Submit" style="endArrow=classic;html=1;rounded=1;" edge="1" parent="1" source="state-created" target="state-payment-pending">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="950" y="250" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="ord-trans2" value="Payment Declined" style="endArrow=classic;html=1;rounded=1;" edge="1" parent="1" source="state-payment-pending" target="state-payment-failed">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="900" y="330" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="ord-trans3" value="Retry" style="endArrow=classic;html=1;rounded=1;curved=1;" edge="1" parent="1" source="state-payment-failed" target="state-payment-pending">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="700" y="330" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="ord-trans4" value="Payment Authorised" style="endArrow=classic;html=1;rounded=1;" edge="1" parent="1" source="state-payment-pending" target="state-payment-confirmed">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="950" y="330" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="ord-trans5" value="Begin Processing" style="endArrow=classic;html=1;rounded=1;" edge="1" parent="1" source="state-payment-confirmed" target="state-processing">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1100" y="340" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="ord-trans6" value="All Items Picked" style="endArrow=classic;html=1;rounded=1;" edge="1" parent="1" source="state-processing" target="state-fulfilling">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1100" y="480" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="ord-trans7" value="Carrier Pickup" style="endArrow=classic;html=1;rounded=1;" edge="1" parent="1" source="state-fulfilling" target="state-shipped">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1100" y="620" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="ord-trans8" value="Delivered" style="endArrow=classic;html=1;rounded=1;" edge="1" parent="1" source="state-shipped" target="state-delivered">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1100" y="760" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="ord-trans9" value="Cancel Order" style="endArrow=classic;html=1;rounded=1;" edge="1" parent="1" source="state-payment-confirmed" target="state-cancelled">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="950" y="480" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="ord-trans10" value="Return" style="endArrow=classic;html=1;rounded=1;" edge="1" parent="1" source="state-delivered" target="state-returned">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="950" y="860" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="ord-trans11" value="Return to Inventory" style="endArrow=classic;html=1;rounded=1;curved=1;" edge="1" parent="1" source="state-returned" target="state-processing">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="700" y="580" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="ord-trans12" value="Refund Issued" style="endArrow=classic;html=1;rounded=1;curved=1;" edge="1" parent="1" source="state-cancelled" target="state-created">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="800" y="300" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-
-        
-        <mxCell id="legend" value="Legend" style="text;html=1;fontSize=12;fontStyle=1;textAnchor=left;" vertex="1" parent="1">
-          <mxGeometry x="50" y="750" width="400" height="30" as="geometry" />
-        </mxCell>
-
-        <mxCell id="leg1" value="Happy Path (Success Flow)" style="text;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="50" y="790" width="400" height="20" as="geometry" />
-        </mxCell>
-
-        <mxCell id="leg2" value="Error/Alternative Path" style="text;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="50" y="820" width="400" height="20" as="geometry" />
-        </mxCell>
-
-        <mxCell id="leg3" value="Recovery/Retry Path" style="text;html=1;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="50" y="850" width="400" height="20" as="geometry" />
-        </mxCell>
-
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="65bd71144e">
+    <diagram id="state-diagram-cart-order" name="State Diagram - Cart &amp; Order States">
+        <mxGraphModel dx="2714" dy="797" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1460" pageHeight="950" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="State Diagram - Shopping Cart &amp; Order Lifecycle" style="text;html=1;fontSize=18;fontStyle=1;textAnchor=middle;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry y="10" width="1400" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="cart-title" value="Shopping Cart States" style="text;html=1;fontSize=14;fontStyle=1;textAnchor=center;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="70" width="400" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-empty" value="Empty Cart" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d4e6f1;strokeColor=#2874a6;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="120" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-active" value="Active Cart" style="ellipse;whiteSpace=wrap;html=1;fillColor=#aed6f1;strokeColor=#1f618d;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="260" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-reviewing" value="Reviewing/&#xa;Editing" style="ellipse;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor=#186a3b;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="400" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-checkout" value="In Checkout" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f4d6a6;strokeColor=#a97000;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="-70" y="260" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-abandoned" value="Abandoned" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8d7da;strokeColor=#721c24;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="430" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="trans1" value="Add Item" style="endArrow=classic;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;" parent="1" source="state-empty" target="state-active" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="200" y="200" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="trans2" value="Update/Remove" style="endArrow=classic;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;" parent="1" source="state-active" target="state-reviewing" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="200" y="340" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="trans3" value="Apply Coupon/&#xa;Shipping" style="endArrow=classic;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;" parent="1" source="state-reviewing" target="state-checkout" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="200" y="480" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="trans4" value="Back to Cart" style="endArrow=classic;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="state-checkout" target="state-active" edge="1">
+                    <mxGeometry x="0.1" y="70" relative="1" as="geometry">
+                        <mxPoint x="50" y="460" as="sourcePoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="trans5" value="Abandon&#xa;(timeout)" style="endArrow=classic;html=1;rounded=1;" parent="1" source="state-active" target="state-abandoned" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="250" y="500" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="trans6" value="Abandon" style="endArrow=classic;html=1;rounded=1;" parent="1" source="state-reviewing" target="state-abandoned" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="250" y="500" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="trans7" value="Remove All" style="endArrow=classic;html=1;rounded=1;curved=1;" parent="1" source="state-reviewing" target="state-empty" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="100" y="320" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="order-title" value="Order Lifecycle States" style="text;html=1;fontSize=14;fontStyle=1;textAnchor=center;" parent="1" vertex="1">
+                    <mxGeometry x="950" y="70" width="400" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-created" value="Order Created" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d2a2c9;strokeColor=#644d75;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="1050" y="120" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-processing" value="Processing" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d2a2c9;strokeColor=#644d75;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="1250" y="380" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-payment-pending" value="Payment&#xa;Pending" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f4d6a6;strokeColor=#a97000;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="260" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-payment-confirmed" value="Payment&#xa;Confirmed" style="ellipse;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor:#186a3b;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="310" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-fulfilling" value="Fulfilling" style="ellipse;whiteSpace=wrap;html=1;fillColor=#85c1e2;strokeColor=#1a5276;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="1250" y="590" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-shipped" value="Shipped" style="ellipse;whiteSpace=wrap;html=1;fillColor=#85c1e2;strokeColor=#1a5276;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="720" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-delivered" value="Delivered" style="ellipse;whiteSpace=wrap;html=1;fillColor=#a9dfbf;strokeColor:#186a3b;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="1020" y="710" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-payment-failed" value="Payment&#xa;Failed" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8d7da;strokeColor=#721c24;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="400" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-cancelled" value="Cancelled" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8d7da;strokeColor:#721c24;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="860" y="510" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="state-returned" value="Returned" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8d7da;strokeColor:#721c24;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="680" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="ord-trans1" value="Submit" style="endArrow=classic;html=1;rounded=1;" parent="1" source="state-created" target="state-payment-pending" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="950" y="250" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ord-trans2" value="Payment Declined" style="endArrow=classic;html=1;rounded=1;" parent="1" source="state-payment-pending" target="state-payment-failed" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="900" y="330" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ord-trans3" value="Retry" style="endArrow=classic;html=1;rounded=1;curved=1;" parent="1" source="state-payment-failed" target="state-payment-pending" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="700" y="330" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ord-trans4" value="Payment Authorised" style="endArrow=classic;html=1;rounded=1;" parent="1" source="state-payment-pending" target="state-payment-confirmed" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="950" y="330" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ord-trans5" value="Begin Processing" style="endArrow=classic;html=1;rounded=1;" parent="1" source="state-payment-confirmed" target="state-processing" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1100" y="340" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ord-trans6" value="All Items Picked" style="endArrow=classic;html=1;rounded=1;" parent="1" source="state-processing" target="state-fulfilling" edge="1">
+                    <mxGeometry y="70" relative="1" as="geometry">
+                        <mxPoint x="1100" y="480" as="sourcePoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ord-trans7" value="Carrier Pickup" style="endArrow=classic;html=1;rounded=1;" parent="1" source="state-fulfilling" target="state-shipped" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1100" y="620" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ord-trans8" value="Delivered" style="endArrow=classic;html=1;rounded=1;" parent="1" source="state-shipped" target="state-delivered" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1100" y="760" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ord-trans9" value="Cancel Order" style="endArrow=classic;html=1;rounded=1;" parent="1" source="state-payment-confirmed" target="state-cancelled" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="950" y="480" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ord-trans10" value="Return" style="endArrow=classic;html=1;rounded=1;" parent="1" source="state-delivered" target="state-returned" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="950" y="860" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ord-trans11" value="Return to Inventory" style="endArrow=classic;html=1;rounded=1;curved=1;" parent="1" source="state-returned" target="state-processing" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="700" y="580" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ord-trans12" value="Refund Issued" style="endArrow=classic;html=1;rounded=1;curved=1;" parent="1" source="state-cancelled" target="state-created" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="800" y="300" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="legend" value="Legend" style="text;html=1;fontSize=12;fontStyle=1;textAnchor=left;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="750" width="400" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="leg1" value="Happy Path (Success Flow)" style="text;html=1;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="790" width="400" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="leg2" value="Error/Alternative Path" style="text;html=1;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="820" width="400" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="leg3" value="Recovery/Retry Path" style="text;html=1;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="850" width="400" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>
