@@ -48,6 +48,10 @@ System design, SaaS vendor inventory, and data/request flow documentation with a
 
 Step-by-step operational workflows organized by role — merchandisers, developers, customer service, marketing, operations, and more.
 
+### [Server-Side Rendering](SSR.md)
+
+How the React PWA renders pages on the server — SSR architecture, data fetching with `getProps`, hydration, middleware pipeline, and the proxy/SSR port relationship.
+
 ### [Local Development Setup](LOCAL_DEVELOPMENT_SETUP.md)
 
 Prerequisites, environment configuration, and debugging guides for running the React PWA and BFF locally.
